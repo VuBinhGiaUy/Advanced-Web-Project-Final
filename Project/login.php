@@ -79,5 +79,5 @@ if(isset($_POST['create'])) {
 </div>
 
 <?php
-include 'inc/footer.php';
+include 'include/footer.php';
 ?>
