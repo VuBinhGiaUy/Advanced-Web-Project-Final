@@ -10,7 +10,7 @@ include "include/head.php";
     <h3>Product Slider</h3>
     <br>
     <div class="row">
-        
+
     </div>
 </div>
 <?php
