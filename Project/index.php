@@ -12,6 +12,7 @@ include "include/head.php";
     <div class="carousel">
         <div class="slideshow-container">
             <!-- Loop here  -->
+            <div><img src=""></div>
         </div>
         <div class="direction prev" tabindex="0" onclick="plusSlides(-1)" role="button">❮</div>
         <div class="direction next" tabindex="0" onclick="plusSlides(1)" role="button">❯</div>
