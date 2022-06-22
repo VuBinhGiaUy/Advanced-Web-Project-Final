@@ -1,0 +1,55 @@
+.carousel {
+    min-height: 200px;
+    background-color: #e6e6e6;
+    position: relative;
+}
+
+.mySlides {
+    display: none;
+    height: 200px;
+    width: auto;
+}
+
+.slideshow-container {
+    position: relative;
+    margin: 0 auto;
+}
+
+.carousel .prev,
+.carousel .next {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.25rem;
+    transition: 0.6s ease;
+    border: none;
+    user-select: none;
+    left: 0;
+}
+
+.carousel .next {
+    left: unset;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.carousel .prev:hover,
+.carousel .prev:focus,
+.carousel .next:hover,
+.carousel .next:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.carousel .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
