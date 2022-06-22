@@ -8,10 +8,9 @@ include "include/head.php";
 </div>
 <div class="container">
     <h3>Product Slider</h3>
-    <hr>
+    <br>
     <div class="row">
-        <!-- loop through posts and ouput them here using col-md-4 and BS4 card -->
-
+        
     </div>
 </div>
 <?php
