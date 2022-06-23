@@ -1,3 +1,29 @@
+
+.front {
+    position: relative;
+}
+
+.front-content {
+    position: absolute;
+    bottom: 0px;
+}
+
+.front-image{
+    filter: brightness(80%);
+}
+
+.title-card {
+    background-color: rgba(0, 0, 0, 0.76);
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+.card-outline{
+    box-shadow: 0px 0px 17px 1px rgba(255, 255, 255, 0.534);
+}
+
 .carousel {
     min-height: 200px;
     background-color: #e6e6e6;
