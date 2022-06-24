@@ -82,3 +82,7 @@
     animation-name: fade;
     animation-duration: 1.5s;
 }
+
+aside{
+    border-radius: 15px!important;;
+}
