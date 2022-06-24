@@ -3,7 +3,7 @@ include "include/head.php";
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
     <div class="row">
-        <img class="front-image" src="https://www.elleman.vn/wp-content/uploads/2021/12/20/208672/review-phim-spider-man-no-way-home-elle-man-cover-1.jpeg" alt="">
+        <img class="front-image" src="https://images8.alphacoders.com/121/1218962.jpg" alt="">
     </div>
 
     <div class="row front-content">
