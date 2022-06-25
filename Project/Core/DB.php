@@ -1,26 +1,26 @@
 <?php 
 
 class DB {
-    private static $conn;
-    private static $ins = null;
+    private $host;
+    private $user;
+    private $password;
+    private $db;
+    public $conn;
 
-    private function __construct() {
-
+    public function __construct($host, $user, $password, $db)
+    {
+        $this->host = $host;
+        $this->user = $user;
+        $this->password = $password;
+        $this->db = $db;
     }
 
-    public static function createInstance() {
-        if(is_null(self::$ins)) {
-            self::$ins = new DB;
-        }
-        return self::$ins;
+    public function createConn() {
+        $this->conn = new mysqli($this->host, $this->user, $this->password, $this->db);
     }
 
-    public static function connect($host, $user, $pw, $db) {
-        self::$conn = new mysqli($host, $user, $pw, $db);
-    }
-
-    public static function getConn() {
-        return self::$conn;
+    public function getConn() {
+        return $this->conn;
     }
 }
 

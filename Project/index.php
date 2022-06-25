@@ -1,5 +1,10 @@
 <?php
 include "include/head.php";
+include "models/Movie.php";
+include "function/db.php";
+
+$movies = new Movie($conn);
+$movieArr = $movies->getMovies();
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
     <div class="row">
@@ -39,7 +44,18 @@ include "include/head.php";
     <h3>Product Slider</h3>
     <br>
     <div class="row center-slide">
-
+        <?php foreach($movieArr as $movie) {?>
+            <div class="container">
+            <div class="card mb-3 round-15">
+                    <img class="card-img-top" src="asset/<?php $movie['movie_title']?>" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title"><?php $movie['movie_title']?></h4>
+                        <p class="card-text"><?php $movie['rating_average']?></p>
+                        <p class="card-text"><?php $movie['price']?></p>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 <?php
