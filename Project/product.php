@@ -26,7 +26,7 @@ $movieArr = $movies->fetchAllMovies();
             <div class="row mx-3 text-center">
                 <?php foreach ($movieArr as $movie) : ?>
                     <div class="col col-md-6 col-lg-4">
-                        <div class="card mb-3 round-15" style="height: 60vh;">
+                        <div class="card mb-3 round-15 add-group-btn" style="height: 70vh;">
                             <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <h4 class="card-title"><?= $movie['title'] ?></h4>
@@ -35,7 +35,7 @@ $movieArr = $movies->fetchAllMovies();
                                     <p class="card-text text-left">$ <?= $movie['price'] ?></p>
                                 </div>
                             </div>
-                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="$<?= $movie['title'] ?>"><i class="fas fa-shopping-cart add-group-btn"></i> Add to Cart</button>
+                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="$<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
