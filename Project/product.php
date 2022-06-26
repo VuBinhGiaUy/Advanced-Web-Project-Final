@@ -31,7 +31,7 @@ $movieArr = $movies->fetchAllMovies();
                                     <p class="card-text text-left">$ <?= $movie['price'] ?></p>
                                 </div>
                             </div>
-                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="$<?= $movie['title'] ?>"><i class="fas fa-shopping-cart add-group-btn"></i> Add to Cart</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
