@@ -5,6 +5,9 @@ include "function/db.php";
 
 $movies = new Movie($conn);
 $movieArr = $movies->fetchAllMovies();
+
+$brands = new Movie($conn);
+$brandArr = $brands->fetchAllBrands();
 ?>
 
 <div class="jumbotron front rounded-0">
@@ -19,7 +22,12 @@ $movieArr = $movies->fetchAllMovies();
             <div class="card-body">
                 <h3>Filter</h3>
                 <hr>
-                
+                <?php foreach ($brandArr as $brand) : ?>
+                    <div>
+                        <input type="checkbox" name="brands[]" value="<?= $brand['brand_id'] ?>">
+                        <?= $brand['brand_name'] ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </aside>
         <div class="col-9">
