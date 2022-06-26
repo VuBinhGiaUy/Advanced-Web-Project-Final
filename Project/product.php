@@ -16,7 +16,11 @@ $movieArr = $movies->fetchAllMovies();
 <div class="container">
     <div class="row">
         <aside class="col-3 bg-dark text-white">
-            fliter
+            <div class="card-body">
+                <h3>Filter</h3>
+                <hr>
+                
+            </div>
         </aside>
         <div class="col-9">
             <div class="row mx-3 text-center">
