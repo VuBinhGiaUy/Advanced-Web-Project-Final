@@ -15,23 +15,40 @@ function init() {
   }
 }
 
+init();
+
+function init() {
+  if(!localStorage.hasOwnProperty("cart")) {
+    let cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(localStorage.getItem("cart"));
+  }
+}
+
+addBtnGroupEventListener();
+
 function addBtnGroupEventListener() {
   let productCounter = document.querySelectorAll('.add-group-btn');
   productCounter.forEach(function(counter) {
     counter.addEventListener("click", function(event) {
+      console.log(event.target.classList);
+      console.log(event.target);
+      if (event.target.classList.contains("add-cart-btn")){
         addToCart(event.target);
+        
+      }
     })
   })
 }
-
-addBtnGroupEventListener();
 
 function addToCart(el) {
   let product = {
     "id": el.getAttribute("data-id"),
     "title": el.getAttribute("data-title"),
     "price": el.getAttribute("data-price"),
+    "count": 1
   }
+  console.log(product);
   let cart = [];
   if(localStorage.getItem("cart").length > 0) {
     cart = JSON.parse(localStorage.getItem('cart'));
@@ -40,7 +57,7 @@ function addToCart(el) {
   let existingItem = false;
   cart.forEach((item) => {
     if(item.id == product.id) {
-      item.count++;
+      item.count += product.count;
       count = item.count;
       existingItem = true;
     }
@@ -54,17 +71,12 @@ function addToCart(el) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+updateCart(JSON.parse(localStorage.getItem("cart")));
+
 function updateCart(cart) {
   let cartBtn = document.querySelector('.cart-btn .badge');
   cartBtn.innerText = cart.length;
-  if(cart.length > 0) {
-    cart.forEach((item) => {
-      let itemBadge = document.querySelector(`.product-${item.id} .badge`);
-      let itemAlert = document.querySelector(`.product-${item.id} .bought`);
-      itemAlert.style.display = "block";
-      itemBadge.innerText = item.count;
-    })
-  }
+
   let tbody = document.querySelector('tbody');
   let tfooter = document.querySelector('tfoot .total');
   let output = '';
