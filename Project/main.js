@@ -6,7 +6,7 @@ $('.center-slide').slick({
 
 let cartBtn = document.querySelector('.cart-btn');
 let cartWrapper = document.querySelector('.cart-wrapper');
-cartAddBtn.addEventListener("click", ()=> cartWrapper.classList.toggle("cart-on"));
+cartBtn.addEventListener("click", ()=> cartWrapper.classList.toggle("cart-on"));
 function init() {
   if(!localStorage.hasOwnProperty("cart")) {
     let cart = [];
