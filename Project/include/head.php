@@ -26,7 +26,7 @@ $message = [];
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <div class="logo">
-            <img src="https://www.pngall.com/wp-content/uploads/2016/04/Compact-Disk-Free-PNG-Image.png" alt="">
+                <img src="https://www.pngall.com/wp-content/uploads/2016/04/Compact-Disk-Free-PNG-Image.png" alt="">
                 <a class="navbar-brand" href="index.php">Project</a>
             </div>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,35 @@ $message = [];
                         <a class="nav-link" href="login.php"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                         </li>
                     <?php endif; ?>
+                    <li class="cart-btn">
+                        <button type="button" class="btn btn-warning transparent">
+                            <i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge badge-light">0</span>
+                        </button>
+                    </li>
                 </ul>
+                <div class="cart-wrapper">
+                    <div class="cart">
+                        <h3 class="font-weight-light"><i class="fa-solid fa-cart-shopping mr-2"></i>Your Cart</h3>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">Total: $<span class="total">$100</span></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
