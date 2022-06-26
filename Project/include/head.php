@@ -26,7 +26,7 @@ $message = [];
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <div class="logo">
-                <img src="https://www.pngall.com/wp-content/uploads/2016/04/Compact-Disk-Free-PNG-Image.png" alt="">
+                <img src="https://cdn.discordapp.com/attachments/984044985580154910/988553971482374154/icon.png" alt="">
                 <a class="navbar-brand" href="index.php">Project</a>
             </div>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">

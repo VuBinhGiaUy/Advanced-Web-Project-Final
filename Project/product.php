@@ -40,7 +40,7 @@ $brandArr = $brands->fetchAllBrands();
                                 <h4 class="card-title"><?= $movie['title'] ?></h4>
                                 <div>
                                     <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
-                                    <p class="card-text text-left">$ <?= $movie['price'] ?></p>
+                                    <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                 </div>
                             </div>
                             <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="$<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
