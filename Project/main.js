@@ -2,13 +2,20 @@ $('.center-slide').slick({
   infinite: true,
   slidesToShow: 5,
   slidesToScroll: 3,
+  autoplay: true,
+  autoplaySpeed: 2000,
 });
+
+// $('.center-slide').slick({
+//   nextArrow: '<div class="col-1" style="z-index: 10;"><i class="fas fa-chevron-circle-left next next-icon"></i></div>',
+//   prevArrow: '<div class="col-1" style="z-index: 10;"><i class="fas fa-chevron-circle-left prev prev-icon"></i></div>'
+// });
 
 let cartBtn = document.querySelector('.cart-btn');
 let cartWrapper = document.querySelector('.cart-wrapper');
-cartBtn.addEventListener("click", ()=> cartWrapper.classList.toggle("cart-on"));
+cartBtn.addEventListener("click", () => cartWrapper.classList.toggle("cart-on"));
 function init() {
-  if(!localStorage.hasOwnProperty("cart")) {
+  if (!localStorage.hasOwnProperty("cart")) {
     let cart = [];
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log(localStorage.getItem("cart"));
@@ -50,7 +57,7 @@ function addToCart(el) {
   }
   console.log(product);
   let cart = [];
-  if(localStorage.getItem("cart").length > 0) {
+  if (localStorage.getItem("cart").length > 0) {
     cart = JSON.parse(localStorage.getItem('cart'));
   }
   let count = product.count
@@ -62,7 +69,7 @@ function addToCart(el) {
       existingItem = true;
     }
   })
-  if(!existingItem) {
+  if (!existingItem) {
     cart.push(product);
   }
   // update card on page
@@ -76,15 +83,14 @@ updateCart(JSON.parse(localStorage.getItem("cart")));
 function updateCart(cart) {
   let cartBtn = document.querySelector('.cart-btn .badge');
   cartBtn.innerText = cart.length;
-
   let tbody = document.querySelector('tbody');
   let tfooter = document.querySelector('tfoot .total');
   let output = '';
   let total = 0;
   cart.forEach((item, i) => {
     total += (item.price * item.count);
-    output+= `<tr>
-      <th scope="row">${i +1}</th>
+    output += `<tr>
+      <th scope="row">${i + 1}</th>
       <td>${item.title}</td>
       <td>${item.price}</td>
       <td>${item.count} <i class="fa fa-trash"></i></td>
