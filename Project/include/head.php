@@ -25,7 +25,10 @@ $message = [];
 <body class="">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php"> <i class="fa fa-book" aria-hidden="true"></i> Project</a>
+            <div class="logo">
+            <img src="https://www.pngall.com/wp-content/uploads/2016/04/Compact-Disk-Free-PNG-Image.png" alt="">
+                <a class="navbar-brand" href="index.php">Project</a>
+            </div>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

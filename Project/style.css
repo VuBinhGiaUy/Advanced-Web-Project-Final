@@ -91,3 +91,8 @@ aside{
 .round-15 {
     border-radius: 15px;
 }
+
+.navbar .logo img{
+    width: 100%;
+    max-width: 60px;
+}
