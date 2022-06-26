@@ -24,7 +24,7 @@ $movieArr = $movies->fetchAllMovies();
                     <div class="col-4">
                         <div class="card mb-3 round-15" style="height: 70vh;">
                             <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
-                            <div class="card-body d-flex flex-column justify-content-around">
+                            <div class="card-body d-flex flex-column justify-content-between">
                                 <h4 class="card-title"><?= $movie['title'] ?></h4>
                                 <div>
                                     <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>

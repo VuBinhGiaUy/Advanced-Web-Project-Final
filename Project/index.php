@@ -48,7 +48,7 @@ $movieArr = $movies->fetchMoviesSlider();
             <div class="container">
             <div class="card mb-3 round-15" style="height: 55vh;">
                     <img class="card-img-top" src="<?= $movie['bluray_img']?>" alt="">
-                    <div class="card-body d-flex flex-column justify-content-around">
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="card-title"><?= $movie['title']?></h4>
                         <div>
                             <p class="card-text"><?= $movie['rating_average']?></p>
