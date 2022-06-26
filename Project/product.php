@@ -19,18 +19,17 @@ $movieArr = $movies->fetchAllMovies();
             fliter
         </aside>
         <div class="col-9">
-            <div class="row justify-content-between mx-3">
+            <div class="row mx-3 text-center">
                 <?php foreach ($movieArr as $movie) : ?>
                     <div class="col-4">
-                        <div class="card mb-3 round-15">
+                        <div class="card mb-3 round-15" style="height: 70vh;">
                             <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
                             <div class="card-body">
                                 <h4 class="card-title"><?= $movie['title'] ?></h4>
-                                <p class="card-text"><?= $movie['rating_average'] ?></p>
-                                <p class="card-text"><?= $movie['price'] ?></p>
-                                <button type="button" name="" id="" class="btn btn-warning btn-md">Buy</button>
+                                <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                <p class="card-text text-left">$ <?= $movie['price'] ?></p>
                             </div>
-                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3">Add to Cart</button>
+                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
