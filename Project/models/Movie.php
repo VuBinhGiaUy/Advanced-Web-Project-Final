@@ -17,7 +17,7 @@ class Movie {
 
     }
 
-    public function fetchMoives($offset = 0, $limit = 12) {
+    public function fetchMoviesSlider($offset = 0, $limit = 12) {
         $sql = "SELECT movie.* FROM movie LIMIT ?,?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ii", $offset, $limit);
@@ -26,13 +26,21 @@ class Movie {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getMovie() {
-        return $this->movie;
+    public function fetchAllMovies() {
+        $sql = "SELECT movie.* FROM movie";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getMovies() {
-        return $this->movies;
-    }
+    // public function getMovie() {
+    //     return $this->movie;
+    // }
+
+    // public function getMovies() {
+    //     return $this->movies;
+    // }
 
     // public function validateMovie($post) {
         

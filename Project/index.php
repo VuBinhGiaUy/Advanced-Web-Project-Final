@@ -4,7 +4,7 @@ include "models/Movie.php";
 include "function/db.php";
 
 $movies = new Movie($conn);
-$movieArr = $movies->getMovies();
+$movieArr = $movies->fetchMoviesSlider();
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
     <div class="row">
@@ -47,11 +47,11 @@ $movieArr = $movies->getMovies();
         <?php foreach($movieArr as $movie) {?>
             <div class="container">
             <div class="card mb-3 round-15">
-                    <img class="card-img-top" src="asset/<?php $movie['movie_title']?>" alt="">
+                    <img class="card-img-top" src="<?= $movie['bluray_img']?>" alt="">
                     <div class="card-body">
-                        <h4 class="card-title"><?php $movie['movie_title']?></h4>
-                        <p class="card-text"><?php $movie['rating_average']?></p>
-                        <p class="card-text"><?php $movie['price']?></p>
+                        <h4 class="card-title"><?= $movie['title']?></h4>
+                        <p class="card-text"><?= $movie['rating_average']?></p>
+                        <p class="card-text"><?= $movie['price']?></p>
                     </div>
                 </div>
             </div>
