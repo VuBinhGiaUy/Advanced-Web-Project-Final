@@ -3,11 +3,11 @@ include 'include/head.php';
 include "models/Movie.php";
 include "function/db.php";
 
-$movies = new Movie($conn);
-$movieArr = $movies->fetchAllMovies();
+$moviesObj = new Movie($conn);
+$movies = $moviesObj->fetchAllMovies();
 
-$brands = new Movie($conn);
-$brandArr = $brands->fetchAllBrands();
+$brandsObj = new Movie($conn);
+$brands = $brandsObj->fetchAllBrands();
 ?>
 
 <div class="jumbotron front rounded-0">
@@ -46,7 +46,7 @@ $brandArr = $brands->fetchAllBrands();
                         }
                     }
                 ?>
-                <?php foreach ($movieArr as $movie) : ?>
+                <?php foreach ($movies as $movie) : ?>
                     <div class="col col-sm-6 col-lg-4">
                         <div class="card mb-3 round-15 add-group-btn" style="height: 70vh;">
                             <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
