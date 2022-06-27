@@ -37,6 +37,15 @@ $brandArr = $brands->fetchAllBrands();
         </aside>
         <div class="col-9">
             <div class="row mx-3 text-center">
+                <?php 
+                    if(isset($_GET['brands'])){
+                        $brandchecks = [];
+                        $brandchecks = $_GET['brands'];
+                        foreach($brandchecks as $checks){
+                            
+                        }
+                    }
+                ?>
                 <?php foreach ($movieArr as $movie) : ?>
                     <div class="col col-sm-6 col-lg-4">
                         <div class="card mb-3 round-15 add-group-btn" style="height: 70vh;">
