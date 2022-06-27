@@ -26,7 +26,7 @@ $brands = $brandsObj->fetchAllBrands();
                 </div>
                 <div class="card-body">
                     <h5>Brand</h5>
-                    <?php foreach ($brandArr as $brand) : ?>
+                    <?php foreach ($brands as $brand) : ?>
                         <div>
                             <input type="checkbox" name="brands[]" value="<?= $brand['brand_id'] ?>">
                             <?= $brand['brand_name'] ?>
