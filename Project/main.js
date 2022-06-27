@@ -23,7 +23,7 @@ function init() {
 init();
 
 function init() {
-  if(!localStorage.hasOwnProperty("cart")) {
+  if (!localStorage.hasOwnProperty("cart")) {
     let cart = [];
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log(localStorage.getItem("cart"));
@@ -34,13 +34,13 @@ addBtnGroupEventListener();
 
 function addBtnGroupEventListener() {
   let productCounter = document.querySelectorAll('.add-group-btn');
-  productCounter.forEach(function(counter) {
-    counter.addEventListener("click", function(event) {
+  productCounter.forEach(function (counter) {
+    counter.addEventListener("click", function (event) {
       console.log(event.target.classList);
       console.log(event.target);
-      if (event.target.classList.contains("add-cart-btn")){
+      if (event.target.classList.contains("add-cart-btn")) {
         addToCart(event.target);
-        
+
       }
     })
   })
@@ -61,7 +61,7 @@ function addToCart(el) {
   let count = product.count
   let existingItem = false;
   cart.forEach((item) => {
-    if(item.id == product.id) {
+    if (item.id == product.id) {
       item.count += product.count;
       count = item.count;
       existingItem = true;
@@ -88,12 +88,40 @@ function updateCart(cart) {
   cart.forEach((item, i) => {
     total += (item.price * item.count);
     output += `<tr>
-      <th scope="row">${i + 1}</th>
+      <th scope="row" movie-id="${item.id}">${i + 1}</th>
       <td>${item.title}</td>
       <td>${item.price}</td>
-      <td>${item.count} <i class="fa fa-trash"></i></td>
+      <td> <button type="button" class="trash">${item.count} <i class="fa fa-trash"></i></button></td>
     </tr>`;
   })
   tbody.innerHTML = output;
   tfooter.innerText = total.toLocaleString();
+  RemoveBtnListner();
+}
+
+
+function RemoveBtnListner() {
+  let removeBtns = document.querySelectorAll('.trash');
+  console.log(removeBtns);
+  removeBtns.forEach(function (button) {
+    button.addEventListener("click", (event) => {
+      let cart = [];
+      let productId = event.target.closest("tr").querySelector("th").getAttribute("movie-id");
+      cart = JSON.parse(localStorage.getItem('cart'));
+
+
+      index = cart.findIndex(product => product.id === productId);
+
+      if (index > -1) {
+        cart.splice(index, 1);
+      }
+
+      event.target.closest("tr").remove();
+
+      // update card on page
+      updateCart(cart);
+      // send cart back to local storage
+      localStorage.setItem('cart', JSON.stringify(cart));
+    });
+  });
 }
