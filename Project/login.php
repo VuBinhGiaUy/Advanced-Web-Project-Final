@@ -18,7 +18,7 @@ if (isset($_POST['create'])) {
             </div>";
     }
     ?>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-6 pr-5">
             <h3 class="font-weight-light">Create Account</h3>
             <hr>
