@@ -2,10 +2,8 @@
   <div class="container pb-5 d-flex justify-content-between">
     <h2>Project</h2>
     <div class="social">
-      <i class="fab fa-facebook-square" style="font-size: 30px;"></i>
-      <i class="fab fa-twitter-square" style="font-size: 30px;"></i>
-      <i class="fas fa-rss-square" style="font-size: 30px;"></i>
-      <i class="fas fa-share-alt-square" style="font-size: 30px;"></i>
+      <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 30px;"></i></a>
+      <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px;"></i></a>
     </div>
   </div>
 </footer>
