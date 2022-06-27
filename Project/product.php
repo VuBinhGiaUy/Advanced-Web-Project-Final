@@ -82,6 +82,9 @@ $brands = $brandsObj->fetchAllBrands();
                 }
                 ?>
             </div>
+            <div class="container pager">
+                
+            </div>
         </div>
     </div>
 

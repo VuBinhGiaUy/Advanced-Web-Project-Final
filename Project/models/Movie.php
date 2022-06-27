@@ -16,7 +16,6 @@ class Movie {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
-
     }
 
     public function fetchMoviesSlider($offset, $limit = 12) {
@@ -26,6 +25,14 @@ class Movie {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getMoviesRow() {
+        $sql = "SELECT COUNT(*) FROM movie";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public function fetchAllMovies() {
