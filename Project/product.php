@@ -76,7 +76,7 @@ $brands = $brandsObj->fetchAllBrands();
                                             <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                         </div>
                                         <div class="col-7">
-                                            <p class="card-text text-left"><i class="fa fa-clock"></i> <?= $movie['duration'] ?> mins</p>
+                                            <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
                                             <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
                                         </div>
                                     </div>
