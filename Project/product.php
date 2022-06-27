@@ -48,6 +48,19 @@ $brandArr = $brands->fetchAllBrands();
                     </div>
                 <?php endforeach; ?>
             </div>
+            <div class="container pager">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link previous" href="#" tabindex="-1">Previous</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link next" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </div>

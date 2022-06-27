@@ -3,13 +3,27 @@ $('.center-slide').slick({
   slidesToShow: 5,
   slidesToScroll: 3,
   autoplay: true,
+  centermode: true,
   autoplaySpeed: 2000,
+  // prevArrow: $('.prev'),
+  // nextArrow: $('.next'),
 });
 
-// $('.center-slide').slick({
-//   nextArrow: '<div class="col-1" style="z-index: 10;"><i class="fas fa-chevron-circle-left next next-icon"></i></div>',
-//   prevArrow: '<div class="col-1" style="z-index: 10;"><i class="fas fa-chevron-circle-left prev prev-icon"></i></div>'
-// });
+function createPager(num) {
+  let pageNum = Math.ceil(num / 12);
+  let output = "";
+  for (let i = 0; i < pageNum; i++) {
+      let active = "";
+      if(i == 0) {
+          active = "active";
+      }
+      output += `<li class="page-item ${active}"><a class="page-link" href="${i * 12}">${i + 1}</a></li>`;
+  }
+  let ul = document.querySelector("ul.pagination")
+  ul.firstElementChild.insertAdjacentHTML("afterend", output);
+};
+
+createPager(200);
 
 let cartBtn = document.querySelector('.cart-btn');
 let cartWrapper = document.querySelector('.cart-wrapper');

@@ -19,7 +19,7 @@ class Movie {
 
     }
 
-    public function fetchMoviesSlider($offset = 0, $limit = 12) {
+    public function fetchMoviesSlider($offset, $limit = 12) {
         $sql = "SELECT movie.* FROM movie LIMIT ?,?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ii", $offset, $limit);

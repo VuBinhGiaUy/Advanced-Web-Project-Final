@@ -44,7 +44,7 @@
     margin: 0 auto;
 }
 
-.carousel .prev,
+/* .carousel .prev,
 .carousel .next {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -74,7 +74,7 @@
 .carousel .next:focus {
     background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-}
+} */
 
 .carousel .fade {
     -webkit-animation-name: fade;
@@ -112,3 +112,4 @@ aside{
 .cart-on {
     right: 0;
   }
+

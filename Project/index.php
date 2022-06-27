@@ -3,8 +3,9 @@ include "include/head.php";
 include "models/Movie.php";
 include "function/db.php";
 
+$offset = rand(0, 38);
 $movies = new Movie($conn);
-$movieArr = $movies->fetchMoviesSlider();
+$movieArr = $movies->fetchMoviesSlider($offset);
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
     <div class="row">
@@ -43,21 +44,31 @@ $movieArr = $movies->fetchMoviesSlider();
 <div class="container">
     <h3>Product Slider</h3>
     <br>
-    <div class="row center-slide">
-        <?php foreach ($movieArr as $movie) { ?>
-            <div class="container">
-                <div class="card mb-3 round-15" style="height: 55vh;">
-                    <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h4 class="card-title"><?= $movie['title'] ?></h4>
-                        <div class="card-text">
-                            <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
-                            <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
+    <div class="row">
+        <!-- <div class="col-1" style="z-index: 10;">
+            <button class="prev" style="margin-top: 100%; border-radius: 7px;"><i class="fas fa-chevron-left prev-icon"></i></button>
+        </div> -->
+        <div class="col-12">
+            <div class="row center-slide">
+                <?php foreach ($movieArr as $movie) { ?>
+                    <div class="container">
+                        <div class="card mb-3 round-15" style="height: 50vh;">
+                            <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                <div class="card-text">
+                                    <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                    <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
-        <?php } ?>
+        </div>
+        <!-- <div class="col-1" style="z-index: 10;">
+            <button class="next" style="margin-top: 100%; border-radius: 7px;"><i class="fas fa-chevron-right next-icon vertical-center"></i></button>
+        </div> -->
     </div>
 </div>
 <?php
