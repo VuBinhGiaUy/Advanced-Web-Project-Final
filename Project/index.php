@@ -36,7 +36,7 @@ $movieArr = $movies->fetchMoviesSlider($offset);
                 </h5>
             </div>
             <div class="row d-none d-md-block title-card">
-                gallery
+            gallery
             </div>
         </div>
     </div>
@@ -44,6 +44,7 @@ $movieArr = $movies->fetchMoviesSlider($offset);
 <div class="container">
     <h3>Product Slider</h3>
     <br>
+<<<<<<< HEAD
     <div class="row">
         <!-- <div class="col-1" style="z-index: 10;">
             <button class="prev" style="margin-top: 100%; border-radius: 7px;"><i class="fas fa-chevron-left prev-icon"></i></button>
@@ -61,6 +62,18 @@ $movieArr = $movies->fetchMoviesSlider($offset);
                                     <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                 </div>
                             </div>
+=======
+    <div class="row center-slide">
+        <?php foreach($movieArr as $movie) {?>
+            <div class="container">
+            <div class="card mb-3 round-15" style="height: 65vh;">
+                    <img class="card-img-top" src="<?= $movie['bluray_img']?>" alt="">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h4 class="card-title"><?= $movie['title']?></h4>
+                        <div>
+                            <p class="card-text"><?= $movie['rating_average']?></p>
+                            <p class="card-text"><?= $movie['price']?></p>
+>>>>>>> 155f2aa73dae4642730ffc7e43daea0fd7ad9200
                         </div>
                     </div>
                 <?php } ?>
