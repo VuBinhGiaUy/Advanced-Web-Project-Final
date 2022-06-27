@@ -113,3 +113,18 @@ aside{
     right: 0;
   }
 
+  nav {
+    background: #e4bbd9;
+  }
+
+  nav a{
+    color: black;
+  }
+
+  footer{
+    background: #e4bbd9;
+  }
+
+  footer i,h2{
+    color: black;
+  }

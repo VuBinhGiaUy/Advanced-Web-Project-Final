@@ -24,7 +24,7 @@ $message = [];
 </head>
 
 <body class="">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <div class="logo">
                 <img src="asset/logo.png" alt="">

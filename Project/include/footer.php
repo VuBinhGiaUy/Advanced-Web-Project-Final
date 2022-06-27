@@ -1,4 +1,4 @@
-<footer class="bg-dark mt-5 py-5 text-white">
+<footer class="mt-5 py-5 text-white">
   <div class="container pb-5 d-flex justify-content-between">
     <h2>Project</h2>
     <div class="social">
