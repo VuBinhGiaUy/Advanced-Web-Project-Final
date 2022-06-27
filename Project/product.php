@@ -16,8 +16,9 @@ $brandArr = $brands->fetchAllBrands();
     </div>
 </div>
 
-<div class="container row">
-        <aside class="col-3 bg-dark text-white">
+<div class="container">
+    <div class="row">
+    <aside class="col-3 bg-dark text-white">
             <form action="" method="GET">
                 <div class="card-header">
                     <h3>Filter</h3>
@@ -54,6 +55,7 @@ $brandArr = $brands->fetchAllBrands();
             </div>
         </div>
     </div>
+
 </div>
 <?php
 include 'include/footer.php'
