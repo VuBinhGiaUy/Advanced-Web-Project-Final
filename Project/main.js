@@ -9,22 +9,6 @@ $('.center-slide').slick({
   // nextArrow: $('.next'),
 });
 
-function createPager(num) {
-  let pageNum = Math.ceil(num / 12);
-  let output = "";
-  for (let i = 0; i < pageNum; i++) {
-      let active = "";
-      if(i == 0) {
-          active = "active";
-      }
-      output += `<li class="page-item ${active}"><a class="page-link" href="${i * 12}">${i + 1}</a></li>`;
-  }
-  let ul = document.querySelector("ul.pagination")
-  ul.firstElementChild.insertAdjacentHTML("afterend", output);
-};
-
-createPager(200);
-
 let cartBtn = document.querySelector('.cart-btn');
 let cartWrapper = document.querySelector('.cart-wrapper');
 cartBtn.addEventListener("click", () => cartWrapper.classList.toggle("cart-on"));

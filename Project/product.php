@@ -27,10 +27,8 @@ $brands = $brandsObj->fetchAllBrands();
                     <button type="submit" class="btn btn-primary btn-sm float-end">Search</button>
                 </div>
                 <div class="card-body">
-                    <h5>Brand</h5>
-
+                    <h5>Genre</h5>
                     <?php foreach ($genres as $genre) : ?>
-
                         <div>
                             <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?>">
                             <?= $genre['genre_name'] ?>
@@ -83,19 +81,6 @@ $brands = $brandsObj->fetchAllBrands();
                 <?php }
                 }
                 ?>
-            </div>
-            <div class="container pager">
-                <nav aria-label="...">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link previous" href="#" tabindex="-1">Previous</a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link next" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
