@@ -27,13 +27,8 @@ $message = [];
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <div class="logo">
-<<<<<<< HEAD
-                <img src="https://cdn.discordapp.com/attachments/984044985580154910/988553971482374154/icon.png" alt="">
+                <img src="asset/logo.png" alt="">
                 <a class="navbar-brand" href="index.php">Dragon Lore Blu-ray</a>
-=======
-                <img src="https://www.pngall.com/wp-content/uploads/2016/04/Compact-Disk-Free-PNG-Image.png" alt="">
-                <a class="navbar-brand" href="index.php">Project</a>
->>>>>>> 155f2aa73dae4642730ffc7e43daea0fd7ad9200
             </div>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
