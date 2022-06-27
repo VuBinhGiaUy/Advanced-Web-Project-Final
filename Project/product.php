@@ -16,7 +16,7 @@ $brandArr = $brands->fetchAllBrands();
     </div>
 </div>
 
-<div class="container">
+<div class="container row">
         <aside class="col-3 bg-dark text-white">
             <form action="" method="GET">
                 <div class="card-header">
@@ -37,7 +37,7 @@ $brandArr = $brands->fetchAllBrands();
         <div class="col-9">
             <div class="row mx-3 text-center">
                 <?php foreach ($movieArr as $movie) : ?>
-                    <div class="col col-md-6 col-lg-4">
+                    <div class="col col-sm-6 col-lg-4">
                         <div class="card mb-3 round-15 add-group-btn" style="height: 70vh;">
                             <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="">
                             <div class="card-body d-flex flex-column justify-content-between">
