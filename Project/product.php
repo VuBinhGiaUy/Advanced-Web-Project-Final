@@ -12,7 +12,7 @@ $brandsObj = new Movie($conn);
 $brands = $brandsObj->fetchAllBrands();
 ?>
 
-<div class="jumbotron front rounded-0">
+<div class="jumbotron front rounded-0" style="opacity: 0;">
     <div class="container">
 
     </div>
