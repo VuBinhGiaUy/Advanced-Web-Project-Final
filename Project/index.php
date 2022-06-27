@@ -46,7 +46,7 @@ $movieArr = $movies->fetchMoviesSlider();
     <div class="row center-slide">
         <?php foreach($movieArr as $movie) {?>
             <div class="container">
-            <div class="card mb-3 round-15" style="height: 55vh;">
+            <div class="card mb-3 round-15" style="height: 65vh;">
                     <img class="card-img-top" src="<?= $movie['bluray_img']?>" alt="">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="card-title"><?= $movie['title']?></h4>

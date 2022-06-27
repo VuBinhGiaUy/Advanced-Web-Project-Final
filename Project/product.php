@@ -17,18 +17,22 @@ $brandArr = $brands->fetchAllBrands();
 </div>
 
 <div class="container">
-    <div class="row">
         <aside class="col-3 bg-dark text-white">
-            <div class="card-body">
-                <h3>Filter</h3>
-                <hr>
-                <?php foreach ($brandArr as $brand) : ?>
-                    <div>
-                        <input type="checkbox" name="brands[]" value="<?= $brand['brand_id'] ?>">
-                        <?= $brand['brand_name'] ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            <form action="" method="GET">
+                <div class="card-header">
+                    <h3>Filter</h3>
+                    <button type="submit" class="btn btn-primary btn-sm float-end">Search</button>
+                </div>
+                <div class="card-body">
+                    <h5>Brand</h5>
+                    <?php foreach ($brandArr as $brand) : ?>
+                        <div>
+                            <input type="checkbox" name="brands[]" value="<?= $brand['brand_id'] ?>">
+                            <?= $brand['brand_name'] ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </form>
         </aside>
         <div class="col-9">
             <div class="row mx-3 text-center">
