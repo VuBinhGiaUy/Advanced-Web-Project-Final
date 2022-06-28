@@ -6,9 +6,9 @@ include "function/db.php";
 $moviesObj = new Movie($conn);
 $movies = $moviesObj->fetchAllMovies();
 
-$genresObj = new Movie($conn);
+$genresObj = new Filter($conn);
 $genres = $genresObj->fetchAllGenre();
-$brandsObj = new Movie($conn);
+$brandsObj = new Filter($conn);
 $brands = $brandsObj->fetchAllBrands();
 ?>
 
@@ -20,11 +20,11 @@ $brands = $brandsObj->fetchAllBrands();
 
 <div class="container">
     <div class="row">
-        <aside class="col-3 bg-dark text-white fliter-box">
+        <aside class="col-3 text-dark filter-box">
             <form action="" method="GET">
                 <div class="card-header">
-                    <h3>Filter</h3>
-                    <button type="submit" class="btn btn-primary btn-sm float-end">Search</button>
+                    <h3 class="filter-title">Filter</h3>
+                    <button type="submit" class="btn-search">Search</button>
                 </div>
                 <div class="card-body dropdown">
                     <button type="button" onclick="myFunction()" class="dropbtn">Genre</button>

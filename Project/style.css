@@ -89,6 +89,7 @@ body {
 aside{
     border-radius: 15px!important;;
     height: 75vh;
+    background: #e4bbd9;
 }
 
 .round-15 {
@@ -133,26 +134,21 @@ footer i,h2{
 }
 
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
+    background-color: #ffc107;
+    color: black;
+    padding: 10px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-  }
-
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-  }
+    width: 100%;
+    max-width: 100%;
+}
 
   .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
+    width: 100%;
+    max-width: 100%;
   }
 
   .dropdown-content {
@@ -162,3 +158,18 @@ footer i,h2{
   }
 
   .show {display:block;}
+
+  form{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .btn-search{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .filter-title{
+    position: relative;
+    text-align: center;
+  }
