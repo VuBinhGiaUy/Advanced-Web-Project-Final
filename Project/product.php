@@ -27,13 +27,17 @@ $brands = $brandsObj->fetchAllBrands();
                     <button type="submit" class="btn btn-primary btn-sm float-end">Search</button>
                 </div>
                 <div class="card-body">
-                    <h5>Genre</h5>
-                    <?php foreach ($genres as $genre) : ?>
-                        <div>
-                            <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?>">
-                            <?= $genre['genre_name'] ?>
+                    <button class="btn-primary dropbtn" onclick="dropFunction()">Genre</button>
+                    <div class="filter"  id="genrebtn">
+                        <div class="subfilter">
+                            <?php foreach ($genres as $genre) : ?>
+                                <div>
+                                    <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?>">
+                                    <?= $genre['genre_name'] ?>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
             </form>
         </aside>

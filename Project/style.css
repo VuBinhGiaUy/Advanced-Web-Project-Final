@@ -131,3 +131,16 @@ footer{
 footer i,h2{
     color: black;
 }
+
+.filter{
+    display: none;
+    overflow: hidden;
+}
+
+.subfilter{
+    display: block;
+}
+
+.show{
+    display: block;
+}
