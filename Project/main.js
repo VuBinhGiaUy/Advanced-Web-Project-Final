@@ -126,8 +126,12 @@ function RemoveBtnListner() {
   });
 }
 
-function myFunction() {
+function GenreDrop() {
   document.getElementById("myGenre").classList.toggle("show");
+}
+
+function BrandDrop() {
+  document.getElementById("myBrand").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it

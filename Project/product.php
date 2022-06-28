@@ -2,6 +2,7 @@
 include 'include/head.php';
 include "models/Movie.php";
 include "function/db.php";
+include "function/filter.php";
 
 $moviesObj = new Movie($conn);
 $movies = $moviesObj->fetchAllMovies();
@@ -27,12 +28,24 @@ $brands = $brandsObj->fetchAllBrands();
                     <button type="submit" class="btn-search">Search</button>
                 </div>
                 <div class="card-body dropdown">
-                    <button type="button" onclick="myFunction()" class="dropbtn">Genre</button>
+                    <button type="button" onclick="GenreDrop()" class="dropbtn">Genre</button>
                     <div id="myGenre" class="dropdown-content">
                         <?php foreach ($genres as $genre) : ?>
                             <div>
                                 <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?>">
                                 <?= $genre['genre_name'] ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="card-body dropdown">
+                    <button type="button" onclick="BrandDrop()" class="dropbtn">Brand</button>
+                    <div id="myBrand" class="dropdown-content">
+                        <?php foreach ($brands as $brand) : ?>
+                            <div>
+                                <input type="checkbox" name="brand[]" value="<?= $brand['brand_id'] ?>">
+                                <?= $brand['brand_name'] ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -44,12 +57,15 @@ $brands = $brandsObj->fetchAllBrands();
                 <?php
                 if (isset($_GET['genre'])) {
                     $genrechecks = [];
+                    $brandchecks = [];
                     $genrechecks = $_GET['genre'];
-                    foreach ($genrechecks as $checks) {
+                    $brandchecks = $_GET['brand'];
+                    foreach (array_merge($genrechecks, $brandchecks) as $checks) {
                         // echo gettype($checks);
+                        $branded = $brandsObj->fetchMovieBrand($checks);
                         $genred = $genresObj->fetchMovieGenre($checks);
                         // echo gettype($genred);
-                        foreach ($genred as $movie) { ?>
+                        foreach (array_merge($genred,$branded) as $movie) { ?>
                             <div class="col col-sm-6 col-lg-4">
                                 <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                     <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
