@@ -20,7 +20,7 @@ $brands = $brandsObj->fetchAllBrands();
 
 <div class="container">
     <div class="row">
-        <aside class="col-3 bg-dark text-white">
+        <aside class="col-3 bg-dark text-white fliter-box">
             <form action="" method="GET">
                 <div class="card-header">
                     <h3>Filter</h3>
