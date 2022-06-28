@@ -126,13 +126,14 @@ function RemoveBtnListner() {
   });
 }
 
-function dropFunction(){
-  document.getElementById("genrebtn").classList.toggle("show");
+function myFunction() {
+  document.getElementById("myGenre").classList.toggle("show");
 }
 
+// Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("filter");
+    var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
