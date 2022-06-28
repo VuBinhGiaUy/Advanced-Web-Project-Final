@@ -60,7 +60,7 @@ $brands = $brandsObj->fetchAllBrands();
                     $brandchecks = [];
                     if (isset($_GET['genre'])) {
                         $genrechecks = $_GET['genre'];
-                        foreach (array_merge((array)$genrechecks, (array)$brandchecks) as $checks) {
+                        foreach (array_merge_recursive((array)$genrechecks, (array)$brandchecks) as $checks) {
                             // echo gettype($checks);
                             $genred = $genresObj->fetchMovieGenre($checks);
                             // echo gettype($genred);
@@ -88,14 +88,14 @@ $brands = $brandsObj->fetchAllBrands();
                         }
                     } else if (isset($_GET['brand'])) {
                         $brandchecks = $_GET['brand'];
-                        foreach (array_merge((array)$genrechecks, (array)$brandchecks) as $checks) {
+                        foreach (array_merge_recursive((array)$genrechecks, (array)$brandchecks) as $checks) {
                             // echo gettype($checks);
                             $branded = $brandsObj->fetchMovieBrand($checks);
                             // echo gettype($genred);
                             foreach ($branded as $movie) { ?>
                                 <div class="col col-sm-6 col-lg-4">
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
+                                        <a href="singleMovie.php"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title"><?= $movie['title'] ?></h5>
                                             <div class="row">
@@ -114,20 +114,18 @@ $brands = $brandsObj->fetchAllBrands();
                                 </div>
                             <?php }
                         }
-                    } else {
+                    } else if(isset($_GET['brand']) && isset($_GET['genre'])){
                         $genrechecks = $_GET['genre'];
                         $brandchecks = $_GET['brand'];
-                        foreach (array_merge((array)$genrechecks, (array)$brandchecks) as $checks) {
+                        foreach (array_unique(array_merge($genrechecks, $brandchecks)) as $checks) {
                             // echo gettype($checks);
                             $branded = $brandsObj->fetchMovieBrand($checks);
                             $genred = $genresObj->fetchMovieGenre($checks);
-                            var_dump($branded);
-                            var_dump($genred);
                             // echo gettype($genred);
-                            foreach (array_merge($genred, $branded) as $movie) { ?>
+                            foreach (array_unique(array_merge($genred, $branded)) as $movie) { ?>
                                 <div class="col col-sm-6 col-lg-4">
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
+                                        <a href="singleMovie.php"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title"><?= $movie['title'] ?></h5>
                                             <div class="row">
