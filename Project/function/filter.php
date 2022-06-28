@@ -25,7 +25,7 @@ class Filter {
     }
 
     public function fetchMovieGenre($id){
-        $sql = "SELECT movie.* 
+        $sql = "SELECT movie.*, genre.genre_name
                 FROM movie JOIN moviegenre ON movie.movie_id = moviegenre.movie_id 
                 JOIN genre ON genre.genre_id = moviegenre.genre_id 
                 WHERE genre.genre_id IN (?)";
@@ -37,7 +37,7 @@ class Filter {
     }
 
     public function fetchMovieBrand($id){
-        $sql = "SELECT movie.* 
+        $sql = "SELECT movie.*, brand.brand_name 
                 FROM movie JOIN moviebrand ON movie.movie_id = moviebrand.movie_id 
                 JOIN brand ON brand.brand_id = moviebrand.brand_id 
                 WHERE brand.brand_id IN (?)";
