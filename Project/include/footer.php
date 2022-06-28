@@ -1,4 +1,4 @@
-<footer class="mt-5 py-5 text-white">
+<footer class="py-5 text-white">
   <div class="container pb-5 d-flex justify-content-between">
     <h2>Spencer Blu-ray</h2>
     <div class="social">

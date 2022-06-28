@@ -11,11 +11,50 @@ class Movie {
     }
 
     public function fetchMovie($id) {
-        $sql = "SELECT movie.* FROM movie WHERE movie.movie_id = $id";
+        $sql = "SELECT movie.*, brand.brand_name
+                FROM movie
+                JOIN moviebrand ON movie.movie_id = moviebrand.movie_id
+                JOIN brand ON brand.brand_id = moviebrand.brand_id
+                WHERE movie.movie_id = $id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
+    }
+
+    public function getGenre($id) {
+        $sql = "SELECT genre.genre_name
+                FROM movie
+                JOIN moviegenre ON movie.movie_id = moviegenre.movie_id
+                JOIN genre ON genre.genre_id = moviegenre.genre_id
+                WHERE movie.movie_id = $id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function countGenre($id) {
+        $sql = "SELECT COUNT(*)
+                FROM movie
+                JOIN moviegenre ON movie.movie_id = moviegenre.movie_id
+                JOIN genre ON genre.genre_id = moviegenre.genre_id
+                WHERE movie.movie_id = $id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getMovieScreenshot($id) {
+        $sql = "SELECT movieimage.img_url
+                FROM movieimage
+                JOIN movie ON movie.movie_id = movieimage.movie_id
+                WHERE movie.movie_id = $id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function fetchMoviesSlider($offset, $limit = 12) {
