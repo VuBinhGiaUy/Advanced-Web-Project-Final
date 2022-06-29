@@ -13,13 +13,14 @@ $brandsObj = new Filter($conn);
 $brands = $brandsObj->fetchAllBrands();
 ?>
 
-<div class="jumbotron front rounded-0" style="opacity: 0;">
+<!-- <div class="jumbotron front rounded-0" style="opacity: 0;">
     <div class="container">
 
     </div>
-</div>
+</div> -->
 
-<div class="container mb-5">
+
+<div class="container mb-5 mt-5 pt-5">
     <div class="row">
         <aside class="col-3 text-dark filter-box">
             <form action="" method="GET">
