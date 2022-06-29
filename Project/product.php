@@ -28,7 +28,7 @@ $brands = $brandsObj->fetchAllBrands();
                     <button type="submit" class="btn-search">Search</button>
                 </div>
                 <div class="card-body dropdown">
-                    <button type="button" onclick="GenreDrop()" class="dropbtn">Genre</button>
+                    <button type="button" onclick="GenreDrop()" class="dropbtn accordion">Genre</button>
                     <div id="myGenre" class="dropdown-content">
                         <?php foreach ($genres as $genre) : ?>
                             <div>
@@ -40,7 +40,7 @@ $brands = $brandsObj->fetchAllBrands();
                 </div>
 
                 <div class="card-body dropdown">
-                    <button type="button" onclick="BrandDrop()" class="dropbtn">Brand</button>
+                    <button type="button" onclick="BrandDrop()" class="dropbtn accordion">Brand</button>
                     <div id="myBrand" class="dropdown-content">
                         <?php foreach ($brands as $brand) : ?>
                             <div>

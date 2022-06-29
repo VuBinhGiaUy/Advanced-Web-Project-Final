@@ -88,7 +88,7 @@ body {
 
 aside{
     border-radius: 15px!important;;
-    height: 75vh;
+    height: 105vh;
     background: #e4bbd9;
 }
 
@@ -153,7 +153,6 @@ footer i,h2{
 
   .dropdown-content {
     display: none;
-    position: absolute;
     min-width: 160px;
   }
 
