@@ -4,6 +4,7 @@ body {
 
 .front {
     position: relative;
+    overflow-x: hidden;
 }
 
 .front-content {
