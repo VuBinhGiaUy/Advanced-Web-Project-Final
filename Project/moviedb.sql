@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 05, 2022 at 09:07 AM
+-- Generation Time: Jul 05, 2022 at 09:29 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -638,16 +638,16 @@ INSERT INTO `movieimage` (`img_id`, `img_url`, `movie_id`) VALUES
 
 DROP TABLE IF EXISTS `review`;
 CREATE TABLE IF NOT EXISTS `review` (
-  `review_id` int(11) NOT NULL AUTO_INCREMENT,
-  `movie_id` int(10) DEFAULT NULL,
-  `user_id` int(10) DEFAULT NULL,
-  `review_like` int(11) DEFAULT NULL,
-  `review_dislike` int(11) DEFAULT NULL,
-  `review_content` varchar(1000) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `review_id` int(10) NOT NULL AUTO_INCREMENT,
+  `movie_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `review_content` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `review_like` int(10) NOT NULL,
+  `review_dislike` int(10) NOT NULL,
   PRIMARY KEY (`review_id`),
   KEY `fk_mr_movie` (`movie_id`),
   KEY `fk_mr_user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -657,12 +657,21 @@ CREATE TABLE IF NOT EXISTS `review` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(10) NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `pw_hash` varchar(1000) DEFAULT NULL,
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pw_hash` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `pw_hash`, `role`) VALUES
+(1, 'admin', '$2y$10$Fo4x6j9ZT0mpbEL4gk005uyGDBfdT8cEkEhMlm3NKQ/syGsgMR6KK', 'admin'),
+(2, 'giauy123', '$2y$10$6n6f0VDu5OKWW.bEz.XlDuQlmFHMn.DEp7a6q/sv0wbikfod012Tm', 'user');
 
 --
 -- Constraints for dumped tables
@@ -687,13 +696,6 @@ ALTER TABLE `moviegenre`
 --
 ALTER TABLE `movieimage`
   ADD CONSTRAINT `fk_mi_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `fk_mr_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
-  ADD CONSTRAINT `fk_mr_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
