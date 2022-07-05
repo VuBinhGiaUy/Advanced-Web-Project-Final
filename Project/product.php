@@ -1,8 +1,7 @@
 <?php
 include 'include/head.php';
 include "class/Movie.php";
-include "function/db.php";
-include "function/filter.php";
+include "class/Filter.php";
 
 $moviesObj = new Movie($conn);
 $movies = $moviesObj->fetchAllMovies();

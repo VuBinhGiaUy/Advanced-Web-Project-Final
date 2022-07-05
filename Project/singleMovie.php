@@ -1,7 +1,6 @@
 <?php
 include "include/head.php";
-include "models/Movie.php";
-include "function/db.php";
+include "class/Movie.php";
 
 $id = 5;
 $moviesObj = new Movie($conn);

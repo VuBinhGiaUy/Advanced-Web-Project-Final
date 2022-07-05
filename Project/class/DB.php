@@ -13,9 +13,6 @@ class DB {
         $this->user = $user;
         $this->password = $password;
         $this->db = $db;
-    }
-
-    public function createConn() {
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->db);
     }
 
