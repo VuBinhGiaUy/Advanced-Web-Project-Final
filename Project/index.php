@@ -18,7 +18,7 @@ $movieArr = $movies->fetchMoviesSlider($offset);
 
         <div class="w-100 d-sm-none d-block"></div>
 
-        <div class="col-10 col-sm-9 offset-1 offset-sm-0 align-self-end">
+        <div class="col-10 col-sm-9 offset-1 offset-sm-0 align-self-end content-text">
             <div class="row">
                 <h4 class="col title-card card-outline text-left text-uppercase">
                     Spider-man:No way home
