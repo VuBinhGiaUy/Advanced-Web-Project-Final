@@ -12,8 +12,8 @@ $movieArr = $movies->fetchMoviesSlider($offset);
     </div>
 
     <div class="row front-content">
-        <div class="col-6 col-sm-3 offset-3 offset-sm-0 ">
-            <img class="h-200 w-100" src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg" alt="">
+        <div class="col-6 col-sm-3 offset-3 offset-sm-0 content-image">
+            <a href="singleMovie.php"><img class="h-200 w-100" src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg" alt=""></a>
         </div>
 
         <div class="w-100 d-sm-none d-block"></div>

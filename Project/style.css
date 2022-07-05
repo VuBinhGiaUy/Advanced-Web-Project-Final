@@ -20,6 +20,14 @@ body {
     object-position: 0 10%;
 }
 
+.content-image {
+    opacity: 0.75;
+}
+
+.content-image:hover {
+    opacity: 1;
+}
+
 .title-card {
     background-color: rgba(0, 0, 0, 0.76);
     padding: 10px;
