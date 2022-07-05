@@ -34,9 +34,6 @@ $movieArr = $movies->fetchMoviesSlider($offset);
                     123min
                 </h5>
             </div>
-            <div class="row d-none d-md-block title-card">
-            gallery
-            </div>
         </div>
     </div>
 </div>
