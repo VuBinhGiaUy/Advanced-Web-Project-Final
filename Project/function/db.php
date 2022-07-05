@@ -1,7 +1,4 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pw = "";
-$db = "moviedb";
-
-$conn = new mysqli($host, $user, $pw, $db);
+$db = new DB("localhost", "root", "", "moviedb");
+$conn = $db->createConn();
+?>

@@ -1,6 +1,6 @@
 <?php
 include 'include/head.php';
-include "models/Movie.php";
+include "class/Movie.php";
 include "function/db.php";
 include "function/filter.php";
 

@@ -1,10 +1,9 @@
 <?php
 include "include/head.php";
 include "models/Movie.php";
-include "function/db.php";
 
 $offset = rand(0, 38);
-$movies = new Movie($conn);
+$movies = new Movie($db->getConn());
 $movieArr = $movies->fetchMoviesSlider($offset);
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
