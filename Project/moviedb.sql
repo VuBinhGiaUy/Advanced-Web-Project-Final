@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 05, 2022 at 09:29 AM
+-- Generation Time: Jul 05, 2022 at 02:19 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -167,8 +167,8 @@ INSERT INTO `movie` (`movie_id`, `title`, `overview`, `bluray_img`, `movie_trail
 
 DROP TABLE IF EXISTS `moviebrand`;
 CREATE TABLE IF NOT EXISTS `moviebrand` (
-  `movie_id` int(10) DEFAULT NULL,
-  `brand_id` int(10) DEFAULT NULL,
+  `movie_id` int(10) NOT NULL,
+  `brand_id` int(10) NOT NULL,
   KEY `fk_mb_movie` (`movie_id`),
   KEY `fk_mb_brand` (`brand_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -237,8 +237,8 @@ INSERT INTO `moviebrand` (`movie_id`, `brand_id`) VALUES
 
 DROP TABLE IF EXISTS `moviegenre`;
 CREATE TABLE IF NOT EXISTS `moviegenre` (
-  `movie_id` int(10) DEFAULT NULL,
-  `genre_id` int(10) DEFAULT NULL,
+  `movie_id` int(10) NOT NULL,
+  `genre_id` int(10) NOT NULL,
   KEY `fk_mg_movie` (`movie_id`),
   KEY `fk_mg_genre` (`genre_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -418,10 +418,9 @@ DROP TABLE IF EXISTS `movieimage`;
 CREATE TABLE IF NOT EXISTS `movieimage` (
   `img_id` int(10) NOT NULL AUTO_INCREMENT,
   `img_url` varchar(255) DEFAULT NULL,
-  `movie_id` int(10) DEFAULT NULL,
+  `movie_id` int(10) NOT NULL,
   PRIMARY KEY (`img_id`),
-  KEY `fk_mi_movie` (`movie_id`),
-  KEY `img_id` (`img_id`)
+  KEY `fk_mi_movie` (`movie_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8;
 
 --
@@ -641,37 +640,46 @@ CREATE TABLE IF NOT EXISTS `review` (
   `review_id` int(10) NOT NULL AUTO_INCREMENT,
   `movie_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `review_content` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `review_like` int(10) NOT NULL,
-  `review_dislike` int(10) NOT NULL,
+  `review_like` int(10) DEFAULT NULL,
+  `review_dislike` int(10) DEFAULT NULL,
+  `review_content` varchar(1000) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `rating` int(10) DEFAULT NULL,
   PRIMARY KEY (`review_id`),
   KEY `fk_mr_movie` (`movie_id`),
   KEY `fk_mr_user` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `movie_id`, `user_id`, `review_like`, `review_dislike`, `review_content`, `rating`) VALUES
+(1, 5, 2, 15, 5, `Sequels are tough. When I first saw this, I didn\'t think it quite lived up to the first but on rewatch that\'s flipped a bit. It\'s still a flawless Reynolds performance but now he has a solid supporting cast around him, a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth. Still flawed, but so much fun. Also, much love for Domino and Cable here.`, 9),
+(2, 43, 2, 5, 15, `The overall pacing is relentless and the sequel shows its hand a lot earlier than you\'d expect. There\'s been endless speculation from fans about the villain, which i won\'t spoil here, but it\'s revealed surprisingly quickly.\r\nYou can\'t help that feel somewhere in the multiverse, there\'s a better version of this movie that exists.`, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pw_hash` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `role` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
+  `pw_hash` varchar(1000) NOT NULL,
+  `role` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `pw_hash`, `role`) VALUES
-(1, 'admin', '$2y$10$Fo4x6j9ZT0mpbEL4gk005uyGDBfdT8cEkEhMlm3NKQ/syGsgMR6KK', 'admin'),
-(2, 'giauy123', '$2y$10$6n6f0VDu5OKWW.bEz.XlDuQlmFHMn.DEp7a6q/sv0wbikfod012Tm', 'user');
+INSERT INTO `users` (`user_id`, `username`, `pw_hash`, `role`) VALUES
+(1, 'admin', '$2y$10$bjGW7N0pXR9sij.meT0fM.ntsqQ1/YkbcD8gt9iE/aHkHT72.9z66', 'admin'),
+(2, 'giauy', '$2y$10$fDyfszU1SHn1LDimbCkKHeUeHmkp1MWnrwamW2FYuoucUMguo7XKO', 'user');
 
 --
 -- Constraints for dumped tables
@@ -696,6 +704,13 @@ ALTER TABLE `moviegenre`
 --
 ALTER TABLE `movieimage`
   ADD CONSTRAINT `fk_mi_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`);
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `fk_mr_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
+  ADD CONSTRAINT `fk_mr_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
