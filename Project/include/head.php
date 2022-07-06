@@ -42,6 +42,9 @@ include "function/init.php";
                         </li>
                         <a class="nav-link" href="logout.php">Logout<span class="sr-only">(current)</span></a>
                         </li>
+                        <li>
+                        <a class="nav-link" href="checkout.php">Purchased<span class="sr-only">(current)</span></a>
+                        </li>
                     <?php else : ?>
                         </li>
                         <a class="nav-link" href="login.php"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
@@ -65,13 +68,22 @@ include "function/init.php";
                                     <th scope="col">Count</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="height:60vh; display: block; overflow-y: scroll;">
 
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="4">Total: $<span class="total">$100</span></td>
+
                                 </tr>
+                                <tr>
+                                    <?php if ($_SESSION['logged_in'] == true) : ?>
+                                        <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
+                                    <?php else : ?>
+                                        <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
+                                    <?php endif; ?>
+                                </tr>
+
                             </tfoot>
                         </table>
                     </div>
