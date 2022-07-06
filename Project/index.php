@@ -3,35 +3,38 @@ include "include/head.php";
 include "class/Movie.php";
 
 $offset = rand(0, 38);
+$bannerId = rand(1, 50);
 $movies = new Movie($conn);
 $movieArr = $movies->fetchMoviesSlider($offset);
+$movieBanner = $movies->fetchMovie($bannerId);
 ?>
 <div class="jumbotron-fluid front rounded-0 mt-5">
-    <div class="row">
-        <img class="front-image" src="https://images8.alphacoders.com/121/1218962.jpg" alt="">
-    </div>
 
-    <div class="row front-content">
+    <div class="row">
+        <iframe class="banner-movie mt-4 my-1" src="<?= getYoutubeEmbedUrl($movieBanner['movie_trailer']);?>?autoplay=1&mute=1&loop=1&rel=0&showinfo=0&controls=0" allow="accelerometer; modestbranding; encrypted-media; gyroscope" frameborder="0">
+        </iframe>
+    </div>
+    <div class="row front-content mb-2 container">
         <div class="col-6 col-sm-3 offset-3 offset-sm-0 content-image">
-            <a href="singleMovie.php"><img class="h-200 w-100" src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg" alt=""></a>
+            <a href="singleMovie.php"><img class="h-200 w-100" src="<?=$movieBanner['bluray_img']?>" alt=""></a>
         </div>
 
         <div class="w-100 d-sm-none d-block"></div>
 
         <div class="col-10 col-sm-9 offset-1 offset-sm-0 align-self-end content-text">
             <div class="row">
-                <h4 class="col title-card card-outline text-left text-uppercase">
-                    Spider-man:No way home
+                <h4 class="col title-card card-outline text-center text-md-left text-uppercase">
+                <?=$movieBanner['title']?>
                 </h4>
 
                 <div class="w-100 d-md-none d-block"></div>
 
                 <h5 class="col col-md-2 mx-1 title-card card-outline text-center text-uppercase">
-                    pg-13
+                RATED: <?=$movieBanner['rated']?>
                 </h5>
 
                 <h5 class="col col-md-2 mx-1 title-card card-outline text-center text-uppercase">
-                    123min
+                DUR: <?=$movieBanner['duration']?>MIN
                 </h5>
             </div>
         </div>

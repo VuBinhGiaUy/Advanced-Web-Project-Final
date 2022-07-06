@@ -5,6 +5,7 @@ body {
 .front {
     position: relative;
     overflow-x: hidden;
+    background-color: none;
 }
 
 .front-content {
@@ -12,12 +13,11 @@ body {
     bottom: 0px;
 }
 
-.front-image{
+.banner-movie {
     width: 100%;
-    height: 700px;
-    filter: brightness(80%);
+    height: 720px;
     object-fit: cover;
-    object-position: 0 15%;
+    object-position: 0 50%;
 }
 
 .content-image {
@@ -39,7 +39,7 @@ body {
     color: white;
 }
 
-.card-outline{
+.card-outline {
     box-shadow: 0px 0px 17px 1px rgba(255, 255, 255, 0.534);
 }
 
@@ -99,8 +99,9 @@ body {
     animation-duration: 1.5s;
 }
 
-aside{
-    border-radius: 15px!important;;
+aside {
+    border-radius: 15px !important;
+    ;
     height: 105vh;
     background: #e4bbd9;
 }
@@ -109,7 +110,7 @@ aside{
     border-radius: 15px;
 }
 
-.navbar .logo img{
+.navbar .logo img {
     width: 100%;
     max-width: 60px;
 }
@@ -134,15 +135,16 @@ nav {
     background: #e4bbd9;
 }
 
-nav a{
+nav a {
     color: black;
 }
 
-footer{
+footer {
     background: #e4bbd9;
 }
 
-footer i,h2{
+footer i,
+h2 {
     color: black;
 }
 
@@ -157,31 +159,48 @@ footer i,h2{
     max-width: 100%;
 }
 
-  .dropdown {
+.dropdown {
     position: relative;
     display: inline-block;
     width: 100%;
     max-width: 100%;
-  }
+}
 
-  .dropdown-content {
+.dropdown-content {
     display: none;
     min-width: 160px;
-  }
+}
 
-  .show {display:block;}
+.show {
+    display: block;
+}
 
-  form{
+form {
     width: 100%;
     max-width: 100%;
-  }
+}
 
-  .btn-search{
+.btn-search {
     width: 100%;
     max-width: 100%;
-  }
+}
 
-  .filter-title{
+.filter-title {
     position: relative;
     text-align: center;
-  }
+}
+
+
+@media (max-width: 575.98px) {
+    .front {
+        background-color: black;
+    }
+
+    .front-content {
+        position: static;
+    }
+
+    .banner-movie {
+        height: 360px;
+    }
+}
