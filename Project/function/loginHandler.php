@@ -112,8 +112,6 @@ $new_user = [
 
  function loginUser($user) {
     $_SESSION['username'] = $user['username'];
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['role'] = $user['role'];
     $_SESSION['logged_in'] = true;
     $_SESSION['msg'] = "Logged in successfully!";
     $_SESSION['msg_class'] = "success";

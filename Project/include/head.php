@@ -1,8 +1,6 @@
 <?php
 include "function/init.php";
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +41,7 @@ include "function/init.php";
                         <a class="nav-link" href="logout.php">Logout<span class="sr-only">(current)</span></a>
                         </li>
                         <li>
-                        <a class="nav-link" href="checkout.php">Purchased<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="checkout.php">Purchased<span class="sr-only">(current)</span></a>
                         </li>
                     <?php else : ?>
                         </li>
@@ -74,18 +72,18 @@ include "function/init.php";
                             <tfoot>
                                 <tr class="row justify-content-between">
                                     <td colspan="4">Total: $<span class="total">$100</span></td>
-                                    <?php if ($_SESSION['logged_in'] == true) : ?>
+                                    <?php if($_SESSION['logged_in'] == true):?>
                                         <td class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
-                                    <?php else : ?>
+                                    <?php else:?>
                                         <td class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
-                                    <?php endif; ?>
+                                    <?php endif;?>
                                 </tr>
                                 <!-- <tr>
-                                    <?php if ($_SESSION['logged_in'] == true) : ?>
+                                    <?php if($_SESSION['logged_in'] == true):?>
                                         <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
-                                    <?php else : ?>
+                                    <?php else:?>
                                         <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
-                                    <?php endif; ?>
+                                    <?php endif;?>
                                 </tr> -->
 
                             </tfoot>

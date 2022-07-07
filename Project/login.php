@@ -10,14 +10,6 @@ if (isset($_POST['create'])) {
 <br>
 <br>
 <div class="container py-5">
-    <?php
-    // to set use the setMsg() fn
-    if (!empty($message)) {
-        echo "<div class='alert alert-{$message['class']}'>
-              {$message['msg']}
-            </div>";
-    }
-    ?>
     <div class="row mt-5">
         <div class="col-md-6 pr-5">
             <h3 class="font-weight-light">Create Account</h3>
@@ -70,6 +62,15 @@ if (isset($_POST['create'])) {
         </div>
     </div>
 </div>
+
+<?php
+    // to set use the setMsg() fn
+    if (!empty($message)) {
+        echo "<div class='alert alert-{$message['class']}'>
+              {$message['msg']}
+            </div>";
+    }
+    ?>
 
 <?php
 include 'include/footer.php';
