@@ -40,7 +40,7 @@ $movieBanner = $movies->fetchMovie($bannerId);
         </div>
     </div>
 </div>
-<div class="container mt-5">
+<div class="container my-5">
     <h3>Product Slider</h3>
     <br>
     <div class="row">
