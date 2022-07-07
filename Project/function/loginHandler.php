@@ -49,7 +49,7 @@ $new_user = [
     } else {
        // next step: check user pw against the hash in the db
        // access the user using the index
-       if(password_verify($login_user['password'], $user['password_hash'])) {
+       if(password_verify($login_user['password'], $user['pw_hash'])) {
           //login the user
           loginUser($user);
        } else {
@@ -124,7 +124,7 @@ $new_user = [
 
  function getUser($user) {
     global $conn;
-    $sql = "SELECT * FROM users WHERE username = ?";
+    $sql = "SELECT * FROM user WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user);
     $stmt->execute();
