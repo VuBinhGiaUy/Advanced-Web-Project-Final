@@ -20,8 +20,8 @@ function setMsg($msg, $class) {
 $new_user = [
     "username" => "",
     "username_err" => false,
-    "email" => "",
-    "email_err" => false,
+   //  "email" => "",
+   //  "email_err" => false,
     "password" => "",
     "password_err" => false,
     "password_confirm" => "",
@@ -63,7 +63,7 @@ $new_user = [
 
  function validateNewUser($user, &$new_user) {
     $new_user['username'] = htmlspecialchars($user['username']);
-    $new_user['email'] = filter_var($user['email'], FILTER_SANITIZE_EMAIL);
+   //  $new_user['email'] = filter_var($user['email'], FILTER_SANITIZE_EMAIL);
     $new_user['password'] = htmlspecialchars($user['password']);
     $new_user['password_confirm'] = htmlspecialchars($user['password_confirm']);
     //input validation
@@ -73,9 +73,9 @@ $new_user = [
        $new_user['username_err'] = true;
     }
     // check email is valid
-    if(!filter_var($new_user['email'], FILTER_VALIDATE_EMAIL)) {
-       $new_user['email_err'] = true;
-    }
+   //  if(!filter_var($new_user['email'], FILTER_VALIDATE_EMAIL)) {
+   //     $new_user['email_err'] = true;
+   //  }
     // check password > 5 chars
     if(strlen($new_user['password']) < 5) {
        $new_user['password_err'] = true;
@@ -97,12 +97,12 @@ $new_user = [
     global $conn;
     $user = [
        "username" => $new_user['username'],
-       "email" => $new_user['email'],
+      //  "email" => $new_user['email'],
        "password" => password_hash($new_user['password'], PASSWORD_DEFAULT)
     ];
-    $sql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO user (username, pw_hash) VALUES (?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $user['username'], $user['email'], $user['password']);
+    $stmt->bind_param("ss", $user['username'], $user['password']);
     $stmt->execute();
     if($stmt->affected_rows == 1) {
        $loginuser = getUser($user['username']);

@@ -7,7 +7,7 @@ if (isset($_POST['create'])) {
     validateLogin($_POST, $login_user);
 }
 ?>
-
+<br>
 <br>
 <div class="container py-5">
     <?php
@@ -28,13 +28,6 @@ if (isset($_POST['create'])) {
                     <input type="text" class="form-control <?php checkValid("username", $new_user) ?>" placeholder="Enter a username..." name="username" value="<?php echo !empty($new_user['username']) ? $new_user['username'] : '' ?>" autocomplete="off">
                     <div class="invalid-feedback">
                         Username invalid!
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control <?php checkValid("email", $new_user) ?>" placeholder="Enter your email..." name="email" value="<?php echo !empty($new_user['email']) ? $new_user['email'] : '' ?>">
-                    <div class="invalid-feedback">
-                        Email invalid
                     </div>
                 </div>
                 <div class="form-group">
