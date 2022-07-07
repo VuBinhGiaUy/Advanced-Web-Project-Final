@@ -72,17 +72,21 @@ include "function/init.php";
 
                             </tbody>
                             <tfoot>
-                                <tr>
+                                <tr class="row justify-content-between">
                                     <td colspan="4">Total: $<span class="total">$100</span></td>
-
-                                </tr>
-                                <tr>
                                     <?php if ($_SESSION['logged_in'] == true) : ?>
                                         <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
                                     <?php else : ?>
                                         <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
                                     <?php endif; ?>
                                 </tr>
+                                <!-- <tr>
+                                    <?php if ($_SESSION['logged_in'] == true) : ?>
+                                        <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
+                                    <?php else : ?>
+                                        <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
+                                    <?php endif; ?>
+                                </tr> -->
 
                             </tfoot>
                         </table>
