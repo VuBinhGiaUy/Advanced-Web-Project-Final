@@ -5,7 +5,7 @@ include "class/Filter.php";
 
 $page = 0;
 
-if(isset($_GET['page'])){
+if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
 
@@ -44,7 +44,7 @@ $brands = $brandsObj->fetchAllBrands();
                     <div id="myGenre" class="dropdown-content">
                         <?php foreach ($genres as $genre) : ?>
                             <div>
-                                <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?>">
+                                <input type="checkbox" name="genre[]" value="<?= $genre['genre_id'] ?> " <?php if (isset($_GET['genre']) && in_array($genre['genre_id'], $_GET['genre'])) echo "checked='checked'"; ?>>
                                 <?= $genre['genre_name'] ?>
                             </div>
                         <?php endforeach; ?>
@@ -56,7 +56,7 @@ $brands = $brandsObj->fetchAllBrands();
                     <div id="myBrand" class="dropdown-content">
                         <?php foreach ($brands as $brand) : ?>
                             <div>
-                                <input type="checkbox" name="brand[]" value="<?= $brand['brand_id'] ?>">
+                                <input type="checkbox" name="brand[]" value="<?= $brand['brand_id'] ?>" <?php if (isset($_GET['brand']) && in_array($genre['brand_id'], $_GET['brand'])) echo "checked='checked'"; ?>>
                                 <?= $brand['brand_name'] ?>
                             </div>
                         <?php endforeach; ?>
@@ -184,19 +184,23 @@ $brands = $brandsObj->fetchAllBrands();
             </div>
             <div class="container pager">
                 <ul class="pagination">
-                    <li class="page-item <?php if($cur_pages == 1){echo "d-none";}?>"><a class="page-link" href="product.php?page=<?= $cur_pages -1?>">Previous</a></li>
+                    <li class="page-item <?php if ($cur_pages == 1) {
+                                                echo "d-none";
+                                            } ?>"><a class="page-link" href="product.php?page=<?= $cur_pages - 1 ?>">Previous</a></li>
                     <?php
                     for ($i = 0; $i < $num_pages; $i++) {
                         $page_num = $i + 1;
                         $active = '';
-                        if($page_num == $cur_pages){
-                            $active ='active';
+                        if ($page_num == $cur_pages) {
+                            $active = 'active';
                         }
 
                         echo "<li class='page-item {$active}'><a class='page-link' href='product.php?page={$page_num}'>{$page_num}</a></li>";
                     }
                     ?>
-                    <li class="page-item <?php if($cur_pages == $num_pages){echo "d-none";}?>"><a class="page-link" href="product.php?page=<?= $cur_pages +1?>">Next</a></li>
+                    <li class="page-item <?php if ($cur_pages == $num_pages) {
+                                                echo "d-none";
+                                            } ?>"><a class="page-link" href="product.php?page=<?= $cur_pages + 1 ?>">Next</a></li>
                 </ul>
             </div>
         </div>
