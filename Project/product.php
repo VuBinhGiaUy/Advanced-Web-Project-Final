@@ -3,8 +3,20 @@ include 'include/head.php';
 include "class/Movie.php";
 include "class/Filter.php";
 
+$page = 0;
+
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}
+
 $moviesObj = new Movie($conn);
-$movies = $moviesObj->fetchAllMovies();
+
+$moviesObj->setNumPage($page);
+$movies = $moviesObj->fetchMovies();
+$num_pages = $moviesObj->getTotalPages();
+$cur_pages = $moviesObj->getCurrentPages();
+
+
 
 $genresObj = new Filter($conn);
 $genres = $genresObj->fetchAllGenre();
@@ -114,7 +126,7 @@ $brands = $brandsObj->fetchAllBrands();
                                 </div>
                             <?php }
                         }
-                    } else if(isset($_GET['brand']) && isset($_GET['genre'])){
+                    } else if (isset($_GET['brand']) && isset($_GET['genre'])) {
                         $genrechecks = $_GET['genre'];
                         $brandchecks = $_GET['brand'];
                         foreach (array_unique(array_merge($genrechecks, $brandchecks)) as $checks) {
@@ -171,7 +183,21 @@ $brands = $brandsObj->fetchAllBrands();
                 ?>
             </div>
             <div class="container pager">
+                <ul class="pagination">
+                    <li class="page-item <?php if($cur_pages == 1){echo "d-none";}?>"><a class="page-link" href="product.php?page=<?= $cur_pages -1?>">Previous</a></li>
+                    <?php
+                    for ($i = 0; $i < $num_pages; $i++) {
+                        $page_num = $i + 1;
+                        $active = '';
+                        if($page_num == $cur_pages){
+                            $active ='active';
+                        }
 
+                        echo "<li class='page-item {$active}'><a class='page-link' href='product.php?page={$page_num}'>{$page_num}</a></li>";
+                    }
+                    ?>
+                    <li class="page-item <?php if($cur_pages == $num_pages){echo "d-none";}?>"><a class="page-link" href="product.php?page=<?= $cur_pages +1?>">Next</a></li>
+                </ul>
             </div>
         </div>
     </div>
