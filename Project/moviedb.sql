@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 05, 2022 at 02:19 PM
+-- Generation Time: Jul 12, 2022 at 08:00 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -46,6 +46,37 @@ INSERT INTO `brand` (`brand_id`, `brand_name`) VALUES
 (5, 'Lions Gate Entertainment'),
 (6, '20th Century Studios'),
 (7, 'Paramount Pictures');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `cart_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
+  `item_count` int(10) DEFAULT NULL,
+  `total` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `fk_ca_users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cartinfo`
+--
+
+DROP TABLE IF EXISTS `cartinfo`;
+CREATE TABLE IF NOT EXISTS `cartinfo` (
+  `cart_id` int(10) NOT NULL AUTO_INCREMENT,
+  `movie_id` int(10) NOT NULL,
+  `quantity` int(10) DEFAULT NULL,
+  KEY `fk_ci_cart` (`cart_id`),
+  KEY `fk_ci_movie` (`movie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -654,8 +685,24 @@ CREATE TABLE IF NOT EXISTS `review` (
 --
 
 INSERT INTO `review` (`review_id`, `movie_id`, `user_id`, `review_like`, `review_dislike`, `review_content`, `rating`) VALUES
-(1, 5, 2, 15, 5, `Sequels are tough. When I first saw this, I didn\'t think it quite lived up to the first but on rewatch that\'s flipped a bit. It\'s still a flawless Reynolds performance but now he has a solid supporting cast around him, a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth. Still flawed, but so much fun. Also, much love for Domino and Cable here.`, 9),
-(2, 43, 2, 5, 15, `The overall pacing is relentless and the sequel shows its hand a lot earlier than you\'d expect. There\'s been endless speculation from fans about the villain, which i won\'t spoil here, but it\'s revealed surprisingly quickly.\r\nYou can\'t help that feel somewhere in the multiverse, there\'s a better version of this movie that exists.`, 6);
+(1, 5, 2, 15, 5, 'Sequels are tough. When I first saw this, I didn\'t think it quite lived up to the first but on rewatch that\'s flipped a bit. It\'s still a flawless Reynolds performance but now he has a solid supporting cast around him, a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth. Still flawed, but so much fun. Also, much love for Domino and Cable here.', 9),
+(2, 43, 2, 5, 15, 'The overall pacing is relentless and the sequel shows its hand a lot earlier than you\'d expect. There\'s been endless speculation from fans about the villain, which i won\'t spoil here, but it\'s revealed surprisingly quickly.\r\nYou can\'t help that feel somewhere in the multiverse, there\'s a better version of this movie that exists.', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userinfo`
+--
+
+DROP TABLE IF EXISTS `userinfo`;
+CREATE TABLE IF NOT EXISTS `userinfo` (
+  `user_id` int(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `birthday` date NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  KEY `fk_ui_users` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -686,6 +733,19 @@ INSERT INTO `users` (`user_id`, `username`, `pw_hash`, `role`) VALUES
 --
 
 --
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_ca_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `cartinfo`
+--
+ALTER TABLE `cartinfo`
+  ADD CONSTRAINT `fk_ci_cart` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
+  ADD CONSTRAINT `fk_ci_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`);
+
+--
 -- Constraints for table `moviebrand`
 --
 ALTER TABLE `moviebrand`
@@ -710,7 +770,14 @@ ALTER TABLE `movieimage`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `fk_mr_movie` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
-  ADD CONSTRAINT `fk_mr_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `fk_mr_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`);
+
+--
+-- Constraints for table `userinfo`
+--
+ALTER TABLE `userinfo`
+  ADD CONSTRAINT `fk_ui_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
