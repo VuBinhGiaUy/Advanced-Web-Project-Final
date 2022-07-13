@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
             <p><span style="font-weight: bold;">Duration: </span><?php echo $movie['duration']; ?> mins</p>
             <p><span style="font-weight: bold;">Rated: </span><?php echo $movie['rated']; ?></p>
             <p><span style="font-weight: bold;">Price: </span>$<?php echo $movie['price']; ?></p>
+            <p class="card-text text-left"><span style="font-weight: bold;">Rating: </span><?= $movie['rating_average'] ?> <i class="fa fa-star" style="color: #ffc107;"></i></p>
             <p><span style="font-weight: bold;">Genre: </span>
                 <?php
                 $str = "";

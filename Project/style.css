@@ -8,6 +8,24 @@ thead, tbody tr {
     table-layout: fixed;/* even columns width , fix width of table too*/
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+.card-title {
+    color: black;
+}
+
+.add-btn {
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    outline: none;
+    border: none;
+    background-color: #007bff;
+    color: white;
+}
+
 .front {
     position: relative;
     overflow-x: hidden;

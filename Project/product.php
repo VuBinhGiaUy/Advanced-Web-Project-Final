@@ -80,10 +80,12 @@ $brands = $brandsObj->fetchAllBrands();
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                         <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
                                         <div class="card-body d-flex flex-column justify-content-between">
-                                            <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
+                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            </a>
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                                     <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                                 </div>
                                                 <div class="col-7">
@@ -108,10 +110,12 @@ $brands = $brandsObj->fetchAllBrands();
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                         <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
-                                            <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
+                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            </a>
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                                     <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                                 </div>
                                                 <div class="col-7">
@@ -138,10 +142,12 @@ $brands = $brandsObj->fetchAllBrands();
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                         <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
-                                            <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
+                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                            </a>
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                                     <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                                 </div>
                                                 <div class="col-7">
@@ -162,10 +168,12 @@ $brands = $brandsObj->fetchAllBrands();
                             <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                 <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                 <div class="card-body d-flex flex-column justify-content-between">
-                                    <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                    <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
+                                        <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                    </a>
                                     <div class="row">
                                         <div class="col-5">
-                                            <p class="card-text text-left"><i class="fa fa-star"></i> <?= $movie['rating_average'] ?></p>
+                                            <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                             <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                         </div>
                                         <div class="col-7">
