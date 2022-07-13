@@ -1,20 +1,22 @@
 <?php if (basename($_SERVER['PHP_SELF']) == "login.php") { ?>
   <footer class="py-5 text-white" style="position: absolute; width: 100%; bottom: 0;">
     <div class="container pb-5 d-flex justify-content-between">
-      <h2>Spencer Blu-ray</h2>
+      <h2>AWP Blu-ray</h2>
       <div class="social">
-        <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 30px;"></i></a>
-        <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px;"></i></a>
+        <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 35px;"></i></a>
+        <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 35px;"></i></a>
+        <a href="linkedin.com"><i class="fab fa-linkedin" style="font-size: 35px;"></i></a>
       </div>
     </div>
   </footer>
-  <?php } else { ?>
+<?php } else { ?>
   <footer class="py-5 text-white">
     <div class="container pb-5 d-flex justify-content-between">
-      <h2>Spencer Blu-ray</h2>
+      <h2>AWP Blu-ray</h2>
       <div class="social">
-        <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 30px;"></i></a>
-        <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 30px;"></i></a>
+        <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 35px;"></i></a>
+        <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 35px;"></i></a>
+        <a href="linkedin.com"><i class="fab fa-linkedin" style="font-size: 35px;"></i></a>
       </div>
     </div>
   </footer>

@@ -22,7 +22,7 @@ include "function/init.php";
         <div class="container">
             <div class="logo">
                 <img src="asset/logo.png" alt="">
-                <a class="navbar-brand" href="index.php">Spencer Blu-ray</a>
+                <a class="navbar-brand" href="index.php" style="font-size: 25px; font-weight: bold;">AWP Blu-ray</a>
             </div>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,26 +30,26 @@ include "function/init.php";
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php" style="font-size: 20px;">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <a class="nav-link" href="product.php">Product<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="product.php?page=1" style="font-size: 20px;">Product<span class="sr-only">(current)</span></a>
                     <?php if ($_SESSION['logged_in'] == true) : ?>
                         </li>
-                        <a class="nav-link" href="user.php"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="user.php" style="font-size: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
                         </li>
                         </li>
-                        <a class="nav-link" href="logout.php">Logout<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="logout.php" style="font-size: 20px;">Logout<span class="sr-only">(current)</span></a>
                         </li>
                         <li>
-                            <a class="nav-link" href="checkout.php">Purchased<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="checkout.php" style="font-size: 20px;">Purchased<span class="sr-only">(current)</span></a>
                         </li>
                     <?php else : ?>
                         </li>
-                        <a class="nav-link" href="login.php"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="login.php" style="font-size: 20px;"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                         </li>
                     <?php endif; ?>
                     <li class="cart-btn">
-                        <button type="button" class="btn btn-warning transparent">
+                        <button type="button" class="btn btn-warning transparent" style="font-size: 20px;">
                             <i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge badge-light">0</span>
                         </button>
                     </li>
