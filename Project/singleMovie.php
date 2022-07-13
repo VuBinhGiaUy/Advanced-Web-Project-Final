@@ -45,8 +45,8 @@ if (isset($_GET['id'])) {
                 <div class="col-6">
                     <button type="button" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn"><i class="fas fa-play"></i> View trailer</button>
                 </div>
-                <div class="col-6">
-                    <button type="button" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <div class="col-6 add-group-btn">
+                    <button type="button" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                 </div>
             </div>
         </div>
