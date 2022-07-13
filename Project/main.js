@@ -11,7 +11,11 @@ $('.center-slide').slick({
 
 let cartBtn = document.querySelector('.cart-btn');
 let cartWrapper = document.querySelector('.cart-wrapper');
+let movieTrailerBtn = document.querySelector('.trailer-btn');
 cartBtn.addEventListener("click", () => cartWrapper.classList.toggle("cart-on"));
+
+movieTrailerBtn.addEventListener("click", () => document.querySelector('.movie-trailer').classList.toggle("d-none"));
+
 function init() {
   if (!localStorage.hasOwnProperty("cart")) {
     let cart = [];
@@ -19,6 +23,9 @@ function init() {
     console.log(localStorage.getItem("cart"));
   }
 }
+
+
+
 
 init();
 

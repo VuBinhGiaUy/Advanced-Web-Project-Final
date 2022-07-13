@@ -40,10 +40,14 @@ if (isset($_GET['id'])) {
                 ?>
             </p>
         </div>
+        <div class="col-12 movie-trailer d-none">
+            <iframe class="banner-movie" src="<?= getYoutubeEmbedUrl($movie['movie_trailer']); ?>" allow="accelerometer; modestbranding; encrypted-media; gyroscope" frameborder="0">
+            </iframe>
+        </div>
         <div class="col-12 pb-4">
             <div class="row">
                 <div class="col-6">
-                    <button type="button" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn"><i class="fas fa-play"></i> View trailer</button>
+                    <button type="button" class="btn btn-primary btn-md btn-block mt-3  trailer-btn"><i class="fas fa-play"></i> View trailer</button>
                 </div>
                 <div class="col-6 add-group-btn">
                     <button type="button" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
