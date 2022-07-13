@@ -4,7 +4,6 @@ include "class/Movie.php";
 include "class/Filter.php";
 
 $page = 0;
-
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
@@ -107,7 +106,7 @@ $brands = $brandsObj->fetchAllBrands();
                             foreach ($branded as $movie) { ?>
                                 <div class="col col-sm-6 col-lg-4">
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <a href="singleMovie.php"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
+                                        <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title"><?= $movie['title'] ?></h5>
                                             <div class="row">
@@ -137,7 +136,7 @@ $brands = $brandsObj->fetchAllBrands();
                             foreach (array_unique(array_merge($genred, $branded)) as $movie) { ?>
                                 <div class="col col-sm-6 col-lg-4">
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <a href="singleMovie.php"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
+                                        <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title"><?= $movie['title'] ?></h5>
                                             <div class="row">
@@ -161,7 +160,7 @@ $brands = $brandsObj->fetchAllBrands();
                     foreach ($movies as $movie) { ?>
                         <div class="col col-sm-6 col-lg-4">
                             <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                <a href="singleMovie.php"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
+                                <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title"><?= $movie['title'] ?></h5>
                                     <div class="row">

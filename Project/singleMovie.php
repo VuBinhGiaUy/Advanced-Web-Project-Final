@@ -2,12 +2,15 @@
 include "include/head.php";
 include "class/Movie.php";
 
-$id = 5;
 $moviesObj = new Movie($conn);
-$movie = $moviesObj->fetchMovie($id);
-$genres = $moviesObj->getGenre($id);
-$genresCount = $moviesObj->countGenre($id);
-$movieScreenshots = $moviesObj->getMovieScreenshot($id);
+
+if (isset($_GET['id'])) {
+    $movie = $moviesObj->fetchMovie($_GET['id']);
+    $genres = $moviesObj->getGenre($_GET['id']);
+    $genresCount = $moviesObj->countGenre($_GET['id']);
+    $movieScreenshots = $moviesObj->getMovieScreenshot($_GET['id']);
+}
+
 ?>
 <div class="container mt-5 px-5" style="background: aliceblue;">
     <div class="row">
@@ -72,13 +75,13 @@ $movieScreenshots = $moviesObj->getMovieScreenshot($id);
                     <div class="d-flex pb-1">
                         <p class="mt-2"><i class="fas fa-star"></i> 9/10</p>
                         <div class="ml-auto">
-                        <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
                         </div>
                     </div>
-                    <p>Sequels are tough. When I first saw this, I didn't think it quite lived up to the first but on rewatch that's flipped a bit. 
-                        It's still a flawless Reynolds performance but now he has a solid supporting cast around him, 
-                        a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth. 
+                    <p>Sequels are tough. When I first saw this, I didn't think it quite lived up to the first but on rewatch that's flipped a bit.
+                        It's still a flawless Reynolds performance but now he has a solid supporting cast around him,
+                        a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth.
                         Still flawed, but so much fun. Also, much love for Domino and Cable here.</p>
                 </div>
             </div>
