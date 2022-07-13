@@ -62,8 +62,8 @@ $movieBanner = $movies->fetchMovie($bannerId);
                                         <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                         <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                     </div>
-                                    <div class="col-6 text-center">
-                                        <button class="add-btn"><i class="fas fa-shopping-cart"></i></button>
+                                    <div class="col-6 text-center add-group-btn">
+                                        <button type="button" name="" id="" class="add-btn mt-2 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i></button>
                                     </div>
                                 </div>
                             </div>
