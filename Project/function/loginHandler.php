@@ -100,7 +100,7 @@ $new_user = [
       //  "email" => $new_user['email'],
        "password" => password_hash($new_user['password'], PASSWORD_DEFAULT)
     ];
-    $sql = "INSERT INTO user (username, pw_hash) VALUES (?,?)";
+    $sql = "INSERT INTO users (username, pw_hash) VALUES (?,?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $user['username'], $user['password']);
     $stmt->execute();
@@ -122,7 +122,7 @@ $new_user = [
 
  function getUser($user) {
     global $conn;
-    $sql = "SELECT * FROM user WHERE username = ?";
+    $sql = "SELECT * FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user);
     $stmt->execute();
