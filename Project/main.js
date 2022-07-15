@@ -14,7 +14,7 @@ let cartWrapper = document.querySelector('.cart-wrapper');
 let movieTrailerBtn = document.querySelector('.trailer-btn');
 cartBtn.addEventListener("click", () => cartWrapper.classList.toggle("cart-on"));
 
-movieTrailerBtn.addEventListener("click", () => document.querySelector('.movie-trailer').classList.toggle("d-none"));
+
 
 function init() {
   if (!localStorage.hasOwnProperty("cart")) {
@@ -159,12 +159,14 @@ function RemoveBtnListner() {
 var acc = document.getElementsByClassName("accordion");
 var i;
 
+console.log(acc);
+
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
     /* Toggle between adding and removing the "active" class,
     to highlight the button that controls the panel */
     this.classList.toggle("active");
-
+    console.log("clickded");
     /* Toggle between hiding and showing the active panel */
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
@@ -174,3 +176,5 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 } 
+
+movieTrailerBtn.addEventListener("click", () => document.querySelector('.movie-trailer').classList.toggle("d-none"));
