@@ -3,25 +3,42 @@ include 'include/head.php';
 include "class/Movie.php";
 include "class/Filter.php";
 
-$page = 0;
-if (isset($_GET['page'])) {
+$page = 1;
+
+$moviesObj = new Filter($conn);
+
+if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = $_GET['page'];
 }
 
-$moviesObj = new Movie($conn);
+if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+    
+    $_GET['genre'] = array_unique($_GET['genre']);
+    $moviesObj->setGenre($_GET['genre']);
+} else {
+    $moviesObj->setGenre();
+}
 
+if (isset($_GET['brand']) && !empty($_GET['brand'])) {
+    
+    $_GET['brand'] = array_unique($_GET['brand']);
+    $moviesObj->setBrand($_GET['brand']);
+} else {
+    $moviesObj->setBrand();
+}
+
+$moviesObj->setCon();
+$moviesObj->countFliteredMovies();
 $moviesObj->setNumPage($page);
-$movies = $moviesObj->fetchMovies();
+$movies = $moviesObj->fetchFliteredMovies();
+
+
 $num_pages = $moviesObj->getTotalPages();
 $cur_pages = $moviesObj->getCurrentPages();
 
 
-
-$genresObj = new Filter($conn);
-$genres = $genresObj->fetchAllGenre();
-$brandsObj = new Filter($conn);
-$brands = $brandsObj->fetchAllBrands();
-$allObj = new Filter($conn);
+$genres = $moviesObj->fetchAllGenre();
+$brands = $moviesObj->fetchAllBrands();
 ?>
 
 <!-- <div class="jumbotron front rounded-0" style="opacity: 0;">
@@ -56,7 +73,7 @@ $allObj = new Filter($conn);
                     <div id="myBrand" class="dropdown-content">
                         <?php foreach ($brands as $brand) : ?>
                             <div>
-                                <input type="checkbox" name="brand[]" value="<?= $brand['brand_id'] ?>" <?php if (isset($_GET['brand']) && in_array($genre['brand_id'], $_GET['brand'])) echo "checked='checked'"; ?>>
+                                <input type="checkbox" name="brand[]" value="<?= $brand['brand_id'] ?>" <?php if (isset($_GET['brand']) && in_array($brand['brand_id'], $_GET['brand'])) echo "checked='checked'"; ?>>
                                 <?= $brand['brand_name'] ?>
                             </div>
                         <?php endforeach; ?>
@@ -67,90 +84,107 @@ $allObj = new Filter($conn);
         <div class="col-9">
             <div class="row mx-3 text-center">
                 <?php
-                if (isset($_GET['genre']) || isset($_GET['brand'])) {
-                    $genrechecks = [];
-                    $brandchecks = [];
-                    $genrechecks = $_GET['genre'];
-                    $brandchecks = $_GET['brand'];
-                    foreach ($genrechecks as $genred) {
-                        foreach($brandchecks as $branded) {
-                            // echo gettype($checks);
-                            $allMovie = $allObj->fetchGenreAndBrand($genred, $branded);
-                            // echo gettype($genred);
-                            foreach ($allMovie as $movie) { ?>
-                                <div class="col col-sm-6 col-lg-4">
-                                    <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
-                                        <div class="card-body d-flex flex-column justify-content-between">
-                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
-                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
-                                            </a>
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
-                                                    <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
-                                                </div>
-                                                <div class="col-7">
-                                                    <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
-                                                    <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                foreach ($movies as $movie) { ?>
+                    <div class="col col-sm-6 col-lg-4">
+                        <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
+                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
+                                    <h5 class="card-title"><?= $movie['title'] ?></h5>
+                                </a>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
+                                        <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
+                                    </div>
+                                    <div class="col-7">
+                                        <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
+                                        <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
                                     </div>
                                 </div>
-                            <?php
-                            }
-                        }
-                    }
-                } else {
-                    foreach ($movies as $movie) { ?>
-                        <div class="col col-sm-6 col-lg-4">
-                            <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
-                                        <h5 class="card-title"><?= $movie['title'] ?></h5>
-                                    </a>
-                                    <div class="row">
-                                        <div class="col-5">
-                                            <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
-                                            <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
-                                        </div>
-                                        <div class="col-7">
-                                            <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
-                                            <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                             </div>
+                            <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                         </div>
+                    </div>
                 <?php }
-                }
+
                 ?>
             </div>
             <div class="container pager">
-                <ul class="pagination">
-                    <li class="page-item <?php if ($cur_pages == 1) {
-                                                echo "d-none";
-                                            } ?>"><a class="page-link" href="product.php?page=<?= $cur_pages - 1 ?>">Previous</a></li>
-                    <?php
-                    for ($i = 0; $i < $num_pages; $i++) {
-                        $page_num = $i + 1;
-                        $active = '';
-                        if ($page_num == $cur_pages) {
-                            $active = 'active';
-                        }
+                <div class="container d-flex mx-3">
+                    <form action="" method="GET">
 
-                        echo "<li class='page-item {$active}'><a class='page-link' href='product.php?page={$page_num}'>{$page_num}</a></li>";
-                    }
-                    ?>
-                    <li class="page-item <?php if ($cur_pages == $num_pages) {
-                                                echo "d-none";
-                                            } ?>"><a class="page-link" href="product.php?page=<?= $cur_pages + 1 ?>">Next</a></li>
-                </ul>
+                        <div class="row flex-row">
+
+                            <div class="page-item">
+                                <button type="submit" class="btn btn-outline-primary mr-2 <?php if ($cur_pages == 1) {
+                                                                                                echo "d-none";
+                                                                                            } ?> " name="page" value="<?= $cur_pages - 1 ?>">Previous</button>
+                                <div>
+                                    <?php if (isset($_GET['genre']) && !empty($_GET['genre'])) :
+                                        foreach ($_GET['genre'] as $genre) : ?>
+                                            <input type="hidden" name="genre[]" value="<?= $genre ?>">
+                                    <?php endforeach;
+                                    endif; ?>
+                                    <?php if (isset($_GET['brand']) && !empty($_GET['brand'])) :
+                                        foreach ($_GET['brand'] as $brand) : ?>
+                                            <input type="hidden" name="brand[]" value="<?= $brand ?>">
+                                    <?php endforeach;
+                                    endif; ?>
+                                </div>
+                            </div>
+
+
+                            <?php
+                            for ($i = 0; $i < $num_pages; $i++) :
+                                $page_num = $i + 1;
+                                $active = '';
+                                if ($page_num == $cur_pages) {
+                                    $active = 'active';
+                                } ?>
+                                <div class="page-item">
+                                    <button type="submit" class="btn btn-outline-primary mr-2 <?= $active ?>" name="page" value="<?= $page_num ?>"><?= $page_num ?></button>
+                                    <div>
+                                        <?php if (isset($_GET['genre']) && !empty($_GET['genre'])) :
+                                            foreach ($_GET['genre'] as $genre) : ?>
+                                                <input type="hidden" name="genre[]" value="<?= $genre ?>">
+                                        <?php endforeach;
+                                        endif; ?>
+                                        <?php if (isset($_GET['brand']) && !empty($_GET['brand'])) :
+                                            foreach ($_GET['brand'] as $brand) : ?>
+                                                <input type="hidden" name="brand[]" value="<?= $brand ?>">
+                                        <?php endforeach;
+                                        endif; ?>
+                                    </div>
+                                </div>
+
+                            <?php endfor; ?>
+
+                            <div class="page-item">
+                                <button type="submit" class="btn btn-outline-primary mr-2 <?php if ($cur_pages == $num_pages) {
+                                                                                                echo "d-none";
+                                                                                            } ?>" name="page" value="<?= $cur_pages + 1 ?>">Next</button>
+                                <div>
+                                    <?php if (isset($_GET['genre']) && !empty($_GET['genre'])) :
+                                        foreach ($_GET['genre'] as $genre) : ?>
+                                            <input type="hidden" name="genre[]" value="<?= $genre ?>">
+                                    <?php endforeach;
+                                    endif; ?>
+                                    <?php if (isset($_GET['brand']) && !empty($_GET['brand'])) :
+                                        foreach ($_GET['brand'] as $brand) : ?>
+                                            <input type="hidden" name="brand[]" value="<?= $brand ?>">
+                                    <?php endforeach;
+                                    endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
+
+
+
         </div>
     </div>
 

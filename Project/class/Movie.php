@@ -4,8 +4,6 @@ class Movie
     protected $conn;
     public $movie = [];
     public $movies = [];
-    public $brand = [];
-    public $brands = [];
     public $offset;
     public $limit;
     public $num_movies;
