@@ -47,4 +47,19 @@ class Filter {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function fetchGenreAndBrand($genreid, $brandid){
+        $sql = "SELECT movie.*, genre.genre_name, brand.brand_name
+                FROM movie JOIN moviegenre ON movie.movie_id = moviegenre.movie_id 
+                JOIN genre ON genre.genre_id = moviegenre.genre_id 
+                JOIN moviebrand ON movie.movie_id = moviebrand.movie_id 
+                JOIN brand ON brand.brand_id = moviebrand.brand_id 
+                WHERE (genre.genre_id IN (?)) OR (brand.brand_id IN (?))
+                GROUP BY movie.title";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $genreid, $brandid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }

@@ -21,6 +21,7 @@ $genresObj = new Filter($conn);
 $genres = $genresObj->fetchAllGenre();
 $brandsObj = new Filter($conn);
 $brands = $brandsObj->fetchAllBrands();
+$allObj = new Filter($conn);
 ?>
 
 <!-- <div class="jumbotron front rounded-0" style="opacity: 0;">
@@ -69,13 +70,14 @@ $brands = $brandsObj->fetchAllBrands();
                 if (isset($_GET['genre']) || isset($_GET['brand'])) {
                     $genrechecks = [];
                     $brandchecks = [];
-                    if (isset($_GET['genre'])) {
-                        $genrechecks = $_GET['genre'];
-                        foreach (array_merge_recursive((array)$genrechecks, (array)$brandchecks) as $checks) {
+                    $genrechecks = $_GET['genre'];
+                    $brandchecks = $_GET['brand'];
+                    foreach ($genrechecks as $genred) {
+                        foreach($brandchecks as $branded) {
                             // echo gettype($checks);
-                            $genred = $genresObj->fetchMovieGenre($checks);
+                            $allMovie = $allObj->fetchGenreAndBrand($genred, $branded);
                             // echo gettype($genred);
-                            foreach ($genred as $movie) { ?>
+                            foreach ($allMovie as $movie) { ?>
                                 <div class="col col-sm-6 col-lg-4">
                                     <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                                         <img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;">
@@ -97,69 +99,8 @@ $brands = $brandsObj->fetchAllBrands();
                                         <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                                     </div>
                                 </div>
-                            <?php }
-                        }
-                    } else if (isset($_GET['brand'])) {
-                        $brandchecks = $_GET['brand'];
-                        foreach (array_merge_recursive((array)$genrechecks, (array)$brandchecks) as $checks) {
-                            // echo gettype($checks);
-                            $branded = $brandsObj->fetchMovieBrand($checks);
-                            // echo gettype($genred);
-                            foreach ($branded as $movie) { ?>
-                                <div class="col col-sm-6 col-lg-4">
-                                    <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
-                                        <div class="card-body d-flex flex-column justify-content-between">
-                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
-                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
-                                            </a>
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
-                                                    <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
-                                                </div>
-                                                <div class="col-7">
-                                                    <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
-                                                    <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                                    </div>
-                                </div>
-                            <?php }
-                        }
-                    } else if (isset($_GET['brand']) && isset($_GET['genre'])) {
-                        $genrechecks = $_GET['genre'];
-                        $brandchecks = $_GET['brand'];
-                        foreach (array_unique(array_merge($genrechecks, $brandchecks)) as $checks) {
-                            // echo gettype($checks);
-                            $branded = $brandsObj->fetchMovieBrand($checks);
-                            $genred = $genresObj->fetchMovieGenre($checks);
-                            // echo gettype($genred);
-                            foreach (array_unique(array_merge($genred, $branded)) as $movie) { ?>
-                                <div class="col col-sm-6 col-lg-4">
-                                    <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                                        <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
-                                        <div class="card-body d-flex flex-column justify-content-between">
-                                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
-                                                <h5 class="card-title"><?= $movie['title'] ?></h5>
-                                            </a>
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
-                                                    <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
-                                                </div>
-                                                <div class="col-7">
-                                                    <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
-                                                    <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" name="" id="" class="btn btn-primary btn-md btn-block mt-3 add-cart-btn" data-price="<?= $movie['price'] ?>" data-id="<?= $movie['movie_id'] ?>" data-title="<?= $movie['title'] ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                                    </div>
-                                </div>
-                        <?php }
+                            <?php
+                            }
                         }
                     }
                 } else {
