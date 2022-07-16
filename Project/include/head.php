@@ -40,9 +40,6 @@ include "function/init.php";
                         </li>
                         <a class="nav-link" href="logout.php" style="font-size: 20px;">Logout<span class="sr-only">(current)</span></a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="checkout.php" style="font-size: 20px;">Purchased<span class="sr-only">(current)</span></a>
-                        </li>
                     <?php else : ?>
                         </li>
                         <a class="nav-link" href="login.php" style="font-size: 20px;"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
