@@ -30,7 +30,7 @@ class Review {
         ];
         $sql = "INSERT INTO review (review.review_content, review.rating, movie_id, user_id) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ss", $review['content'], $review['rating'], $movie_id, $user_id);
+        $stmt->bind_param("ssii", $review['content'], $review['rating'], $movie_id, $user_id);
         $stmt->execute();
     }
 }

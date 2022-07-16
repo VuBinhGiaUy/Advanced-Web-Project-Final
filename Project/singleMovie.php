@@ -2,9 +2,23 @@
 include "include/head.php";
 include "class/Movie.php";
 include "class/Review.php";
+include "function/loginHandler.php";
 
 $moviesObj = new Movie($conn);
 $reviewObj = new Review($conn);
+$reviewNew = new Review($conn);
+
+if (isset($_REQUEST['review_content']) && !empty($_REQUEST['review_content'])){
+    $user = getUser($_SESSION['username']);
+    $user_id = $user['user_id'];
+    $review = [
+        "review_content" => htmlspecialchars($_REQUEST['review_content']),
+        "review_rating" => $_REQUEST['review_rating'] * 2
+    ];
+    $reviewNew->postReviews($review, $_GET['id'], $user_id);
+    $_REQUEST['review_content'] = null;
+
+}
 
 if (isset($_GET['id'])) {
     $movie = $moviesObj->fetchMovie($_GET['id']);
@@ -13,6 +27,8 @@ if (isset($_GET['id'])) {
     $movieScreenshots = $moviesObj->getMovieScreenshot($_GET['id']);
     $reviews = $reviewObj->fetchReviews($_GET['id']);
 }
+
+
 
 ?>
 <div class="container mt-5 px-5" style="background: aliceblue;">
@@ -72,6 +88,7 @@ if (isset($_GET['id'])) {
         <div class="col-12 pb-4">
             <h4>Reviews:</h4>
             <?php if ($_SESSION['logged_in'] == true) : ?>
+
                 <?php foreach ($reviews as $review) { ?>
                     <div class="row py-1">
                         <div class="col-2 text-center">
@@ -90,26 +107,27 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                 <?php } ?>
-                <div class="col-12 py-3">
-                    <div class="form-group row">
-                        <div class="col-5">
-                            <label for="exampleFormControlTextarea1">Review Content</label>
-
+                <form action="" method="POST" >
+                    <div class="col-12 py-3">
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <label for="exampleFormControlTextarea1">Review Content</label>
+                            </div>
+                            <div class="col-1">
+                                Rating
+                            </div>
+                            <div class="col-6">
+                                <span class="star-rating">
+                                    <label class="rating-label">
+                                        <input class="rating" max="5" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)" step="0.5" style="--stars:5;--value:1;" type="range" value="5" name="review_rating">
+                                    </label>
+                                </span>
+                            </div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="review_content"></textarea>
                         </div>
-                        <div class="col-1">
-                            Rating
-                        </div>
-                        <div class="col-6">
-                            <span class="star-rating">
-                                <label class="rating-label">
-                                    <input class="rating" max="10" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)" step="0.5" style="--stars:5;--value:1;" type="range" value="5">
-                                </label>
-                            </span>
-                        </div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="border-0"><button type="submit" name="username" id="" class="btn btn-success btn-md btn-block" value="<?= $_SESSION['username'] ?>">Review</button></div>
                     </div>
-                    <div class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Review</button></div>
-                </div>
+                </form>
             <?php else : ?>
                 <a href="login.php">
                     <div class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to view and write Review</button></div>
