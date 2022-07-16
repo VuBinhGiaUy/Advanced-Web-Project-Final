@@ -23,8 +23,15 @@ class Review {
         return $results->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getComments() {
-        
+    public function postReviews($new_review, $movie_id, $user_id) {
+        $review = [
+            "content" => $new_review['review_content'],
+            "rating" => $new_review['review_rating']
+        ];
+        $sql = "INSERT INTO review (review.review_content, review.rating, movie_id, user_id) VALUES (?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $review['content'], $review['rating'], $movie_id, $user_id);
+        $stmt->execute();
     }
 }
 
