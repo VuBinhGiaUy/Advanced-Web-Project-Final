@@ -92,44 +92,21 @@ if (isset($_GET['id'])) {
                 <?php } ?>
                 <div class="col-12 py-3">
                     <div class="form-group row">
-                        <div class="col-7">
-                            <label for="exampleFormControlTextarea1">Review Content</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
                         <div class="col-5">
+                            <label for="exampleFormControlTextarea1">Review Content</label>
+
+                        </div>
+                        <div class="col-1">
+                            Rating
+                        </div>
+                        <div class="col-6">
                             <span class="star-rating">
-                                <!--RADIO 1-->
-                                <input type='checkbox' class="radio_item" value="1" name="item" id="radio1">
-                                <label class="label_item" for="radio1"> &#9734 </label>
-                                <!--RADIO 2-->
-                                <input type='checkbox' class="radio_item" value="2" name="item2" id="radio2">
-                                <label class="label_item" for="radio2"> &#9734 </label>
-                                <!--RADIO 3-->
-                                <input type='checkbox' class="radio_item" value="3" name="item3" id="radio3">
-                                <label class="label_item" for="radio3"> &#9734 </label>
-                                <!--RADIO 4-->
-                                <input type='checkbox' class="radio_item" value="4" name="item4" id="radio4">
-                                <label class="label_item" for="radio4"> &#9734 </label>
-                                <!--RADIO 5-->
-                                <input type='checkbox' class="radio_item" value="5" name="item5" id="radio5">
-                                <label class="label_item" for="radio5"> &#9734 </label>
-                                <!--RADIO 6-->
-                                <input type='checkbox' class="radio_item" value="6" name="item" id="radio6">
-                                <label class="label_item" for="radio6"> &#9734 </label>
-                                <!--RADIO 7-->
-                                <input type='checkbox' class="radio_item" value="7" name="item2" id="radio7">
-                                <label class="label_item" for="radio7"> &#9734 </label>
-                                <!--RADIO 8-->
-                                <input type='checkbox' class="radio_item" value="8" name="item3" id="radio8">
-                                <label class="label_item" for="radio8"> &#9734 </label>
-                                <!--RADIO 9-->
-                                <input type='checkbox' class="radio_item" value="9" name="item4" id="radio9">
-                                <label class="label_item" for="radio9"> &#9734 </label>
-                                <!--RADIO 10-->
-                                <input type='checkbox' class="radio_item" value="10" name="item5" id="radio10">
-                                <label class="label_item" for="radio10"> &#9734 </label>
+                                <label class="rating-label">
+                                    <input class="rating" max="10" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)" step="0.5" style="--stars:5;--value:1;" type="range" value="5">
+                                </label>
                             </span>
                         </div>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <div class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Review</button></div>
                 </div>
