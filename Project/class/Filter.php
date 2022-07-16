@@ -4,6 +4,7 @@ class Filter extends Movie
     protected $conn;
     public $genres = [];
     public $brands = [];
+    public $keywords = [];
 
     public $sqlCon = "";
     public $sqlType = "";
@@ -68,6 +69,14 @@ class Filter extends Movie
         $this->brands = $brandArr;
     }
 
+    public function setKeyword($keywordString = ""){
+        $keywordArr = explode( ',', $keywordString );
+        $this->keywords = [];
+        foreach ($keywordArr as $keyword){
+            array_push($this->keywords,"%". $keyword."%");
+        }
+    }
+
     // set both sqlCon and sqlParam
     public function setCon()
     {
@@ -101,6 +110,21 @@ class Filter extends Movie
                 }
             }
         }
+        if (!empty($this->keywords)) {
+            $this->sqlCon = $this->sqlCon .  " AND (";
+
+            $lastKey = count($this->keywords) - 1;
+            foreach ($this->keywords as $key => $keyword) {
+                $this->sqlCon =  $this->sqlCon . "movie.title LIKE ?";
+                $this->sqlType =  $this->sqlType . "s";
+                array_push($this->sqlParam, $keyword);
+                if ($key === $lastKey) {
+                    $this->sqlCon =  $this->sqlCon . ")";
+                } else {
+                    $this->sqlCon = $this->sqlCon .  " OR ";
+                }
+            }
+        }
     }
 
     public function fetchFliteredMovies()
@@ -114,6 +138,7 @@ class Filter extends Movie
                 JOIN moviebrand ON movie.movie_id = moviebrand.movie_id 
                 JOIN brand
                 WHERE brand.brand_id = moviebrand.brand_id" . $this->sqlCon." GROUP BY (movie.movie_id) LIMIT ?,?";
+                print_r($sql);
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param($this->sqlType . "ii", ...$pageParam);
         $stmt->execute();

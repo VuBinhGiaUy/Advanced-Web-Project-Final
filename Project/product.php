@@ -27,6 +27,12 @@ if (isset($_GET['brand']) && !empty($_GET['brand'])) {
     $moviesObj->setBrand();
 }
 
+if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+    $moviesObj->setKeyword($_GET['keyword']);
+} else {
+    $moviesObj->setKeyword();
+}
+
 $moviesObj->setCon();
 $moviesObj->countFliteredMovies();
 $moviesObj->setNumPage($page);
@@ -54,6 +60,7 @@ $brands = $moviesObj->fetchAllBrands();
             <form action="" method="GET">
                 <div class="card-header">
                     <h3 class="filter-title">Filter</h3>
+                    <textarea class="form-control ml-1 my-2" id="exampleFormControlTextarea1" rows="2" name="keyword" maxlength="50" style="resize: none; width: 96% ;"></textarea>
                     <button type="submit" class="btn-search">Search</button>
                 </div>
                 <div class="card-body dropdown">
