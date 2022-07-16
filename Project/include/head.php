@@ -35,7 +35,7 @@ include "function/init.php";
                     <a class="nav-link" href="product.php?page=1" style="font-size: 20px;">Product<span class="sr-only">(current)</span></a>
                     <?php if ($_SESSION['logged_in'] == true) : ?>
                         </li>
-                        <a class="nav-link" href="user.php" style="font-size: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="userinfo.php" style="font-size: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
                         </li>
                         </li>
                         <a class="nav-link" href="logout.php" style="font-size: 20px;">Logout<span class="sr-only">(current)</span></a>
