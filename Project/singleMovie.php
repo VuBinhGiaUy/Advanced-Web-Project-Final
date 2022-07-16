@@ -1,14 +1,17 @@
 <?php
 include "include/head.php";
 include "class/Movie.php";
+include "class/Review.php";
 
 $moviesObj = new Movie($conn);
+$reviewObj = new Review($conn);
 
 if (isset($_GET['id'])) {
     $movie = $moviesObj->fetchMovie($_GET['id']);
     $genres = $moviesObj->getGenre($_GET['id']);
     $genresCount = $moviesObj->countGenre($_GET['id']);
     $movieScreenshots = $moviesObj->getMovieScreenshot($_GET['id']);
+    $reviews = $reviewObj->fetchReviews($_GET['id']);
 }
 
 ?>
@@ -67,26 +70,25 @@ if (isset($_GET['id'])) {
             <p><?php echo $movie['overview']; ?></p>
         </div>
         <div class="col-12 pb-4">
-            <h4>Comments:</h4>
-            <div class="row">
-                <div class="col-1">
-                    <h6>GiaUy</h6>
-                    <img src="https://scontent.fsgn5-13.fna.fbcdn.net/v/t1.6435-9/41645101_678801425826197_7582335169869119488_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=ad2b24&_nc_ohc=5yONXkFlWOMAX8sIsqr&tn=jUMdiGebBXrKgA7g&_nc_ht=scontent.fsgn5-13.fna&oh=00_AT-Q9g1K4-xMmfTW5U7ZYpTzhMg1ZVfyynVgWsekU50taw&oe=62E13F24" alt="" class="rounded-circle" width="50px" height="50px">
+            <h4>Reviews:</h4>
+            <?php foreach ($reviews as $review) { ?>
+            <div class="row py-1">
+                <div class="col-2 text-center">
+                    <h6 class="py-2"><?= $review['username']; ?></h6>
+                    <img src="asset/logo.png" alt="" width="75px" height="75px">
                 </div>
-                <div class="col-11 py-2" style="border-radius: 15px; background: beige;">
+                <div class="col-10 py-2" style="border-radius: 15px; background: beige;">
                     <div class="d-flex pb-1">
-                        <p class="mt-2"><i class="fas fa-star"></i> 9/10</p>
+                        <p class="mt-2"><i class="fas fa-star" style="color: #ffc107;"></i> <?= $review['rating']; ?>/10</p>
                         <div class="ml-auto">
-                            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i></button>
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i></button>
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i> <?= $review['review_like']; ?></button>
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i> <?= $review['review_dislike']; ?></button>
                         </div>
                     </div>
-                    <p>Sequels are tough. When I first saw this, I didn't think it quite lived up to the first but on rewatch that's flipped a bit.
-                        It's still a flawless Reynolds performance but now he has a solid supporting cast around him,
-                        a story that has some meat on it and, surprisingly some growth for the Merc with the Mouth.
-                        Still flawed, but so much fun. Also, much love for Domino and Cable here.</p>
+                    <p><?= $review['review_content']; ?></p>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>
