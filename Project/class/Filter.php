@@ -114,7 +114,6 @@ class Filter extends Movie
                 JOIN moviebrand ON movie.movie_id = moviebrand.movie_id 
                 JOIN brand
                 WHERE brand.brand_id = moviebrand.brand_id" . $this->sqlCon." GROUP BY (movie.movie_id) LIMIT ?,?";
-                print_r($sql);
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param($this->sqlType . "ii", ...$pageParam);
         $stmt->execute();
@@ -132,7 +131,6 @@ class Filter extends Movie
                 JOIN moviebrand ON movie.movie_id = moviebrand.movie_id 
                 JOIN brand
                 WHERE brand.brand_id = moviebrand.brand_id" . $this->sqlCon;
-                print_r($sql);
         $stmt = $this->conn->prepare($sql);
         if(!empty($pageParam)){
             $stmt->bind_param($this->sqlType, ...$pageParam);
