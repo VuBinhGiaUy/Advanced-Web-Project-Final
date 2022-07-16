@@ -179,3 +179,15 @@ for (i = 0; i < acc.length; i++) {
 } 
 
 movieTrailerBtn.addEventListener("click", () => document.querySelector('.movie-trailer').classList.toggle("d-none"));
+
+$('.star-rating input').click( function(){
+  starvalue = $(this).attr('value');
+
+  for(i=0; i<=10; i++){
+      if (i <= starvalue){
+          $("#radio" + i).prop('checked', true);
+      } else {
+          $("#radio" + i).prop('checked', false);
+      }
+  }
+});
