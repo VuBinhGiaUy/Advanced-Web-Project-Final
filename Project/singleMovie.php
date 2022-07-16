@@ -71,24 +71,31 @@ if (isset($_GET['id'])) {
         </div>
         <div class="col-12 pb-4">
             <h4>Reviews:</h4>
+            <?php if ($_SESSION['logged_in'] == true) : ?>
             <?php foreach ($reviews as $review) { ?>
-            <div class="row py-1">
-                <div class="col-2 text-center">
-                    <h6 class="py-2"><?= $review['username']; ?></h6>
-                    <img src="asset/logo.png" alt="" width="75px" height="75px">
-                </div>
-                <div class="col-10 py-2" style="border-radius: 15px; background: beige;">
-                    <div class="d-flex pb-1">
-                        <p class="mt-2"><i class="fas fa-star" style="color: #ffc107;"></i> <?= $review['rating']; ?>/10</p>
-                        <div class="ml-auto">
-                            <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i> <?= $review['review_like']; ?></button>
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i> <?= $review['review_dislike']; ?></button>
-                        </div>
+                <div class="row py-1">
+                    <div class="col-2 text-center">
+                        <h6 class="py-2"><?= $review['username']; ?></h6>
+                        <img src="asset/logo.png" alt="" width="75px" height="75px">
                     </div>
-                    <p><?= $review['review_content']; ?></p>
+                    <div class="col-10 py-2" style="border-radius: 15px; background: beige;">
+                        <div class="d-flex pb-1">
+                            <p class="mt-2"><i class="fas fa-star" style="color: #ffc107;"></i> <?= $review['rating']; ?>/10</p>
+                            <div class="ml-auto">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-thumbs-up"></i> <?= $review['review_like']; ?></button>
+                                <button class="btn btn-danger" type="submit"><i class="fas fa-thumbs-down"></i> <?= $review['review_dislike']; ?></button>
+                            </div>
+                        </div>
+                        <p><?= $review['review_content']; ?></p>
+                    </div>
                 </div>
-            </div>
             <?php } ?>
+            <div class="col-12 py-3">
+                <div class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Review</button></div>
+            </div>
+            <?php else : ?>
+                <div class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to view and write Review</button></div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
