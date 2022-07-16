@@ -48,6 +48,8 @@ include "function/init.php";
                         <a class="nav-link" href="login.php" style="font-size: 20px;"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                         </li>
                     <?php endif; ?>
+                    <?php $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1); 
+                    if ($curPageName != "login.php"):?>
                     <li class="cart-btn">
                         <button type="button" class="btn btn-warning transparent" style="font-size: 20px;">
                             <i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge badge-light">0</span>
@@ -78,18 +80,12 @@ include "function/init.php";
                                         <td class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
                                     <?php endif;?>
                                 </tr>
-                                <!-- <tr>
-                                    <?php if($_SESSION['logged_in'] == true):?>
-                                        <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
-                                    <?php else:?>
-                                        <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
-                                    <?php endif;?>
-                                </tr> -->
 
                             </tfoot>
                         </table>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
