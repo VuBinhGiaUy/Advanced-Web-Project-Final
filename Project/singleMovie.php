@@ -65,9 +65,6 @@ if (isset($_GET['id'])) {
                 <?php } ?>
             </div>
             <p><?php echo $movie['overview']; ?></p>
-            <p><span style="font-weight: bold;">Director: </span></p>
-            <p><span style="font-weight: bold;">Starring: </span></p>
-            <p><span style="font-weight: bold;">Producer: </span></p>
         </div>
         <div class="col-12 pb-4">
             <h4>Comments:</h4>

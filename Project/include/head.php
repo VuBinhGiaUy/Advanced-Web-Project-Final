@@ -35,61 +35,55 @@ include "function/init.php";
                     <a class="nav-link" href="product.php?page=1" style="font-size: 20px;">Product<span class="sr-only">(current)</span></a>
                     <?php if ($_SESSION['logged_in'] == true) : ?>
                         </li>
-                        <a class="nav-link" href="user.php" style="font-size: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="userinfo.php" style="font-size: 20px;"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username']; ?><span class="sr-only">(current)</span></a>
                         </li>
                         </li>
                         <a class="nav-link" href="logout.php" style="font-size: 20px;">Logout<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="checkout.php" style="font-size: 20px;">Purchased<span class="sr-only">(current)</span></a>
                         </li>
                     <?php else : ?>
                         </li>
                         <a class="nav-link" href="login.php" style="font-size: 20px;"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                         </li>
                     <?php endif; ?>
-                    <li class="cart-btn">
-                        <button type="button" class="btn btn-warning transparent" style="font-size: 20px;">
-                            <i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge badge-light">0</span>
-                        </button>
-                    </li>
+                    <?php $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+                    if ($curPageName != "login.php") : ?>
+                        <li class="cart-btn">
+                            <button type="button" class="btn btn-warning transparent" style="font-size: 20px;">
+                                <i class="fa-solid fa-cart-shopping"></i> Cart <span class="badge badge-light">0</span>
+                            </button>
+                        </li>
+
+                        <li class="cart-wrapper">
+                            <div class="cart">
+                                <h3 class="font-weight-light"><i class="fa-solid fa-cart-shopping mr-2"></i>Your Cart</h3>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="height:60vh; display: block; overflow-y: scroll;">
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="row justify-content-between">
+                                            <td colspan="4">Total: $<span class="total"></span></td>
+                                            <?php if ($_SESSION['logged_in'] == true) : ?>
+                                                <td class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
+                                            <?php else : ?>
+                                                <td class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
+                                            <?php endif; ?>
+                                        </tr>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </li>
+                    <?php endif; ?>
                 </ul>
-                <div class="cart-wrapper">
-                    <div class="cart">
-                        <h3 class="font-weight-light"><i class="fa-solid fa-cart-shopping mr-2"></i>Your Cart</h3>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Count</th>
-                                </tr>
-                            </thead>
-                            <tbody style="height:60vh; display: block; overflow-y: scroll;">
-
-                            </tbody>
-                            <tfoot>
-                                <tr class="row justify-content-between">
-                                    <td colspan="4">Total: $<span class="total">$100</span></td>
-                                    <?php if($_SESSION['logged_in'] == true):?>
-                                        <td class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
-                                    <?php else:?>
-                                        <td class="border-0"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
-                                    <?php endif;?>
-                                </tr>
-                                <!-- <tr>
-                                    <?php if($_SESSION['logged_in'] == true):?>
-                                        <td><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
-                                    <?php else:?>
-                                        <td><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></td>
-                                    <?php endif;?>
-                                </tr> -->
-
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>

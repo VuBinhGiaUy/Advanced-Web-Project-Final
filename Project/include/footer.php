@@ -1,4 +1,4 @@
-<?php if (basename($_SERVER['PHP_SELF']) == "login.php") { ?>
+<?php if (basename($_SERVER['PHP_SELF']) == "login.php" || basename($_SERVER['PHP_SELF']) == "userinfo.php") { ?>
   <footer class="py-5 text-white" style="position: absolute; width: 100%; bottom: 0;">
     <div class="container pb-5 d-flex justify-content-between">
       <h2>AWP Blu-ray</h2>
