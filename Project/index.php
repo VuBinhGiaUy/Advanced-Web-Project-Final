@@ -16,7 +16,7 @@ $movieBanner = $movies->fetchMovie($bannerId);
     </div>
     <div class="row front-content mb-2 container">
         <div class="col-6 col-sm-3 offset-3 offset-sm-0 content-image">
-            <a href="singleMovie.php"><img class="h-200 w-100" src="<?= $movieBanner['bluray_img'] ?>" alt=""></a>
+            <a href="singleMovie.php?id=<?= $movieBanner['movie_id']?>"><img class="h-200 w-100" src="<?= $movieBanner['bluray_img'] ?>" alt=""></a>
         </div>
 
         <div class="w-100 d-sm-none d-block"></div>
