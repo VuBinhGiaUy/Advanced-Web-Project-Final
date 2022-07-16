@@ -70,7 +70,7 @@ include "function/init.php";
                                     </tbody>
                                     <tfoot>
                                         <tr class="row justify-content-between">
-                                            <td colspan="4">Total: $<span class="total">$100</span></td>
+                                            <td colspan="4">Total: $<span class="total"></span></td>
                                             <?php if ($_SESSION['logged_in'] == true) : ?>
                                                 <td class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
                                             <?php else : ?>

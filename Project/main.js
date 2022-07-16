@@ -97,11 +97,12 @@ function updateCart(cart) {
     output += `<tr>
       <th scope="row" movie-id="${item.id}">${i + 1}</th>
       <td>${item.title}</td>
-      <td>${item.price}</td>
+      <td>$${item.price}</td>
       <td> <button type="button" class="trash">${item.count} <i class="fa fa-trash"></i></button></td>
     </tr>`;
   })
   tbody.innerHTML = output;
+  total = total.toFixed(2);
   tfooter.innerText = total.toLocaleString();
   RemoveBtnListner();
 }
