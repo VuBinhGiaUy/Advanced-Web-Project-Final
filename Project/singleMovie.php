@@ -114,19 +114,19 @@ if (isset($_GET['id'])) {
                                 <input type='checkbox' class="radio_item" value="5" name="item5" id="radio5">
                                 <label class="label_item" for="radio5"> &#9734 </label>
                                 <!--RADIO 6-->
-                                <input type='checkbox' class="radio_item" value="6" name="item" id="radio6">
+                                <input type='checkbox' class="radio_item" value="6" name="item6" id="radio6">
                                 <label class="label_item" for="radio6"> &#9734 </label>
                                 <!--RADIO 7-->
-                                <input type='checkbox' class="radio_item" value="7" name="item2" id="radio7">
+                                <input type='checkbox' class="radio_item" value="7" name="item7" id="radio7">
                                 <label class="label_item" for="radio7"> &#9734 </label>
                                 <!--RADIO 8-->
-                                <input type='checkbox' class="radio_item" value="8" name="item3" id="radio8">
+                                <input type='checkbox' class="radio_item" value="8" name="item8" id="radio8">
                                 <label class="label_item" for="radio8"> &#9734 </label>
                                 <!--RADIO 9-->
-                                <input type='checkbox' class="radio_item" value="9" name="item4" id="radio9">
+                                <input type='checkbox' class="radio_item" value="9" name="item9" id="radio9">
                                 <label class="label_item" for="radio9"> &#9734 </label>
                                 <!--RADIO 10-->
-                                <input type='checkbox' class="radio_item" value="10" name="item5" id="radio10">
+                                <input type='checkbox' class="radio_item" value="10" name="item10" id="radio10">
                                 <label class="label_item" for="radio10"> &#9734 </label>
                             </span>
                         </div>
