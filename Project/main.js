@@ -212,3 +212,12 @@ $('.star-rating input').click( function(){
       }
   }
 });
+
+function navFunction() {
+  var x = document.getElementById("myNav");
+  if (x.className === "collapse") {
+    x.className += " responsive";
+  } else {
+    x.className = "collapse";
+  }
+} 
