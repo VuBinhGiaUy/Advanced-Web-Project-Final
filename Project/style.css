@@ -214,6 +214,24 @@ form {
     text-align: center;
 }
 
+div .card {
+    height: 65vh;
+}
+
+div .card .card-img-top {
+    height: 32vh;
+}
+
+
+@media (max-width: 768px) {
+    div .card {
+        height: 75vh;
+    }
+
+    div .card .card-img-top {
+        height: 50vh;
+    }
+}
 
 @media (max-width: 575.98px) {
     .front {

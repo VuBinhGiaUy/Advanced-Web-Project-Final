@@ -56,7 +56,7 @@ $brands = $moviesObj->fetchAllBrands();
 
 <div class="container mb-5 mt-5 pt-5">
     <div class="row">
-        <aside class="col-10 offset-1 offset-md-0 col-md-3 text-dark my-3 filter-box">
+        <aside class="offset-1 offset-md-0 col-lg-3 col-md-4 col-sm-10 text-dark my-3 filter-box">
             <form action="" method="GET">
                 <div class="card-header">
                     <h3 class="filter-title">Filter</h3>
@@ -88,23 +88,23 @@ $brands = $moviesObj->fetchAllBrands();
                 </div>
             </form>
         </aside>
-        <div class="col col-md-9">
+        <div class="col-lg-9 col-md-8 col-sm-12">
             <div class="row mx-3 text-center">
                 <?php
                 foreach ($movies as $movie) { ?>
-                    <div class="col col-lg-4">
-                        <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
-                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card mb-3 round-15 add-group-btn">
+                            <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt=""></a>
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>">
                                     <h5 class="card-title"><?= $movie['title'] ?></h5>
                                 </a>
                                 <div class="row">
-                                    <div class="col-5">
+                                    <div class="col-lg-5 col-md-6 col-sm-6 col-6">
                                         <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                         <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                     </div>
-                                    <div class="col-7">
+                                    <div class="col-lg-7 col-md-6 col-sm-6 col-6">
                                         <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
                                         <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
                                     </div>
