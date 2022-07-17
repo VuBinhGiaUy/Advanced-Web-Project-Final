@@ -85,6 +85,11 @@ include "function/init.php";
                             </div>
                         </li>
                     <?php endif; ?>
+                    <li>
+                        <a href="javascript:void(0);" class="icon" onclick="navFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

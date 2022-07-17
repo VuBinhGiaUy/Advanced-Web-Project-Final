@@ -228,3 +228,30 @@ form {
         height: 360px;
     }
 }
+
+.fa-bars {
+    display: none;
+   }
+   
+
+@media screen and (max-width: 600px) {
+    .collapse .navbar-collapse li:not(:first-child) {display: none;}
+    .collapse .navbar-collapse li.fa-bars {
+      float: right;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .collapse .navbar-collapse li.responsive {position: relative;}
+    .collapse .navbar-collapse li.responsive a.fa-bars {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .collapse .navbar-collapse li.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
