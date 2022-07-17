@@ -20,7 +20,7 @@ include "function/init.php";
 </head>
 
 <body class="">
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
         <div class="container">
             <div class="logo">
                 <img src="asset/logo.png" alt="">
