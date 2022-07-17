@@ -74,9 +74,9 @@ include "function/init.php";
                                         <tr class="row justify-content-between">
                                             <td colspan="4">Total: $<span class="total"></span></td>
                                             <?php if ($_SESSION['logged_in'] == true) : ?>
-                                                <td class="border-0"><button type="button" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
+                                                <td class="border-0"><button type="button" onclick="window.location.href='checkout.php'" name="" id="" class="btn btn-success btn-md btn-block">Check Out</button></td>
                                             <?php else : ?>
-                                                <td class="border-0"><a href="login..php"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></a></td>
+                                                <td class="border-0"><a href="login.php"><button type="button" name="" id="" class="btn btn-warning btn-md btn-block">Log In to Check Out</button></a></td>
                                             <?php endif; ?>
                                         </tr>
 
