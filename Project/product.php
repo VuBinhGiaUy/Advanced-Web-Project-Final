@@ -100,11 +100,11 @@ $brands = $moviesObj->fetchAllBrands();
                                     <h5 class="card-title"><?= $movie['title'] ?></h5>
                                 </a>
                                 <div class="row">
-                                    <div class="col-lg-5 col-md-6 col-sm-6 col-6">
+                                    <div class="col-xl-5 col-6">
                                         <p class="card-text text-left"><i class="fa fa-star" style="color: #ffc107;"></i> <?= $movie['rating_average'] ?></p>
                                         <p class="card-text text-left"><i class="fas fa-dollar-sign"></i> <?= $movie['price'] ?></p>
                                     </div>
-                                    <div class="col-lg-7 col-md-6 col-sm-6 col-6">
+                                    <div class="col-xl-7 col-6">
                                         <p class="card-text text-left"><i class="fas fa-clock"></i> <?= $movie['duration'] ?> mins</p>
                                         <p class="card-text text-left"><i class="fas fa-calendar-alt"></i> <?= $movie['release_date'] ?></p>
                                     </div>
