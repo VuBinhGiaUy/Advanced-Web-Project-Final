@@ -14,7 +14,7 @@
     <div class="container pb-5 d-flex justify-content-between">
       <h2>AWP Blu-ray</h2>
       <div class="social">
-        <a href="facebook.com"><i class="fab fa-facebook-square" style="font-size: 35px;"></i></a>
+        <a href="https://www.facebook.com/entee28"><i class="fab fa-facebook-square" style="font-size: 35px;"></i></a>
         <a href="twitter.com"><i class="fab fa-twitter-square" style="font-size: 35px;"></i></a>
         <a href="linkedin.com"><i class="fab fa-linkedin" style="font-size: 35px;"></i></a>
       </div>
