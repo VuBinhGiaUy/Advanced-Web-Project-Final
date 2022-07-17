@@ -56,7 +56,7 @@ $brands = $moviesObj->fetchAllBrands();
 
 <div class="container mb-5 mt-5 pt-5">
     <div class="row">
-        <aside class="col-3 text-dark filter-box">
+        <aside class="col-10 offset-1 offset-md-0 col-md-3 text-dark my-3 filter-box">
             <form action="" method="GET">
                 <div class="card-header">
                     <h3 class="filter-title">Filter</h3>
@@ -88,11 +88,11 @@ $brands = $moviesObj->fetchAllBrands();
                 </div>
             </form>
         </aside>
-        <div class="col-9">
+        <div class="col col-md-9">
             <div class="row mx-3 text-center">
                 <?php
                 foreach ($movies as $movie) { ?>
-                    <div class="col col-sm-6 col-lg-4">
+                    <div class="col col-lg-4">
                         <div class="card mb-3 round-15 add-group-btn" style="height: 65vh;">
                             <a href="singleMovie.php?id=<?= $movie['movie_id']; ?>"><img class="card-img-top" src="<?= $movie['bluray_img'] ?>" alt="" style="height: 32vh;"></a>
                             <div class="card-body d-flex flex-column justify-content-between">
@@ -124,7 +124,7 @@ $brands = $moviesObj->fetchAllBrands();
                         <div class="row flex-row">
 
                             <div class="page-item">
-                                <button type="submit" class="btn btn-outline-primary mr-2 <?php if ($cur_pages == 1) {
+                                <button type="submit" class="btn btn-outline-primary mr-2 my-1 <?php if ($cur_pages == 1) {
                                                                                                 echo "d-none";
                                                                                             } ?> " name="page" value="<?= $cur_pages - 1 ?>">Previous</button>
                                 <div>
@@ -150,7 +150,7 @@ $brands = $moviesObj->fetchAllBrands();
                                     $active = 'active';
                                 } ?>
                                 <div class="page-item">
-                                    <button type="submit" class="btn btn-outline-primary mr-2 <?= $active ?>" name="page" value="<?= $page_num ?>"><?= $page_num ?></button>
+                                    <button type="submit" class="btn btn-outline-primary mr-2 my-1 <?= $active ?>" name="page" value="<?= $page_num ?>"><?= $page_num ?></button>
                                     <div>
                                         <?php if (isset($_GET['genre']) && !empty($_GET['genre'])) :
                                             foreach ($_GET['genre'] as $genre) : ?>
@@ -168,7 +168,7 @@ $brands = $moviesObj->fetchAllBrands();
                             <?php endfor; ?>
 
                             <div class="page-item">
-                                <button type="submit" class="btn btn-outline-primary mr-2 <?php if ($cur_pages == $num_pages) {
+                                <button type="submit" class="btn btn-outline-primary mr-2 my-1 <?php if ($cur_pages == $num_pages) {
                                                                                                 echo "d-none";
                                                                                             } ?>" name="page" value="<?= $cur_pages + 1 ?>">Next</button>
                                 <div>
