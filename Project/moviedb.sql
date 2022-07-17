@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 16, 2022 at 10:29 AM
+-- Generation Time: Jul 17, 2022 at 10:58 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -188,7 +188,7 @@ INSERT INTO `movie` (`movie_id`, `title`, `overview`, `bluray_img`, `movie_trail
 (47, 'MOONFALL', 'When a powerful force knocks the moon off of its orbit, former astronaut and NASA executive Jo Fowler (Halle Berry) immediately jumps into action to save humankind. Unfortunately for her, only Brian Harper (Patrick Wilson), a figure from her past, and KC Houseman (John Bradley), a conspiracy theorist, believe that she holds the key to stopping the impending disaster. With only a few weeks until the displaced heavenly body crashes into Earth, the unlikely team heroically pursues their mission, only to find out that the moon is not what it seems to be.', 'https://images.static-bluray.com/movies/covers/304610_large.jpg?t=1647377355', 'https://youtu.be/ivIwdQBlS10', 2022, '39.99', 130, '6.20', NULL, 'PG-13'),
 (48, 'TURNING RED', 'A 13-year-old girl turns into a giant red panda whenever she gets too excited.', 'https://images.static-bluray.com/movies/covers/308567_large.jpg?t=1649719633', 'https://youtu.be/XdKzUbAiswE', 2022, '34.99', 100, '7.30', NULL, 'PG'),
 (49, 'MORBIUS', 'Biochemist Michael Morbius tries to cure himself of a rare blood disease, but he inadvertently infects himself with a form of vampirism instead.', 'https://images.static-bluray.com/movies/covers/304643_large.jpg?t=1651615993', 'https://youtu.be/oZ6iiRrz1SY', 2022, '38.99', 104, '5.50', NULL, 'PG-13'),
-(50, 'X', 'At a secluded farmhouse in Texas, a film crew arrives to shoot an adult film. Their hosts, a reclusive elderly couple, take a special interest in their young guests. As night falls the couple\'s leering interest turns violent.', 'https://images.static-bluray.com/movies/covers/312907_large.jpg?t=1650694385', 'https://youtu.be/_67iqeUPfB0', 2022, '39.99', 105, '7.30', NULL, 'R');
+(50, 'X', 'At a secluded farmhouse in Texas, a film crew arrives to shoot an adult film. Their hosts, a reclusive elderly couple, take a special interest in their young guests. As night falls the couple\'s leering interest turns violent.', 'https://images.static-bluray.com/movies/covers/312907_large.jpg?t=1650694385', 'https://youtu.be/WsIQT6_60BI', 2022, '39.99', 105, '7.30', NULL, 'R');
 
 -- --------------------------------------------------------
 
@@ -671,8 +671,8 @@ CREATE TABLE IF NOT EXISTS `review` (
   `review_id` int(10) NOT NULL AUTO_INCREMENT,
   `movie_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `review_like` int(10) DEFAULT NULL,
-  `review_dislike` int(10) DEFAULT NULL,
+  `review_like` int(10) DEFAULT '0',
+  `review_dislike` int(10) DEFAULT '0',
   `review_content` varchar(5000) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `rating` int(10) DEFAULT NULL,
   PRIMARY KEY (`review_id`),
@@ -829,7 +829,7 @@ INSERT INTO `users` (`user_id`, `username`, `pw_hash`, `role`) VALUES
 (1, 'admin', '$2y$10$jMVHYj3fRUj849/4KdAdL.mJWWJeJhxCVrEDrUkSoP7ZpUW3GqIGS', 'admin'),
 (2, 'giauy1', '$2y$10$De7AoNSPJrKwhkdg.TA3IO2458DICgySyG51QUWF9wvfbhLIdWouO', 'user'),
 (3, 'giauy321', '$2y$10$h8mMIDcKLysOe6OIaBKbh.6sw8hrdmQkArZyMv8VUHIfXGQoFmQBm', 'user'),
-(4, 'lahuy', '$2y$10$Ka.3iZROfMB/7yIT5FDYD.L7Bb7nEvAWwTa8cpD1yRzFtGfm4O3/6', 'user'),
+(4, 'lahuy', '$2y$10$imMDbKWtBvcl/yTsT.TPFu8YPV5uid.MQxSdY69sixGYhBYGfj6E2', 'user'),
 (5, 'trunghai', '$2y$10$EwGg2p5It4SzcQRuuWgP9uq4zO9E9G5GuI07TOE9YXUN.fJocjvRa', 'user'),
 (6, 'nhatthanh', '$2y$10$iVjKHML/Hs.PxqKpF6jr..INixZ6H4L25MUtJTvl.J9af1Zs4ZucW', 'user'),
 (7, 'phuhoa', '$2y$10$aRoG9dGEC89ZpxCJPojVOuk4w0GCCnPGsFcNBPaZX0Fo7NjWAzTSe', 'user'),
