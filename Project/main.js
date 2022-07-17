@@ -7,6 +7,13 @@ $('.center-slide').slick({
   autoplaySpeed: 2000,
   responsive: [
     {
+      breakpoint: 1368,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      }
+    },
+    {
       breakpoint: 1024,
       settings: {
         slidesToShow: 3,
