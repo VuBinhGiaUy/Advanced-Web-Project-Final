@@ -70,18 +70,16 @@ class Filter extends Movie
     }
 
     public function setKeyword($keywordString = ""){
-        var_dump($keywordString);
+
         $keywordString = str_replace("\r\n"," ",$keywordString);
         $keywordString = trim(preg_replace('!\s+!', ' ', $keywordString));
-        var_dump($keywordString);
+
         $keywordArr = explode( ' ', $keywordString );
         $this->keywords = [];
         foreach ($keywordArr as $keyword){
             array_push($this->keywords,"%". $keyword."%");
         }
         
-        var_dump($keywordArr);
-        var_dump($keywordArr);
     }
 
     // set both sqlCon and sqlParam
