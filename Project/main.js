@@ -5,8 +5,29 @@ $('.center-slide').slick({
   autoplay: true,
   centermode: true,
   autoplaySpeed: 2000,
-  // prevArrow: $('.prev'),
-  // nextArrow: $('.next'),
+  responsive: [
+    {
+      breakpoint: 1368,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      }
+    },
+  ]
 });
 
 let cartBtn = document.querySelector('.cart-btn');
